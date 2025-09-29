@@ -18,9 +18,9 @@ const Sidebar = () => {
         id:2,
         label: "Users",
         icon:<FaBoxesPacking />,
-        path:"products",
+        path:"users",
         content: (column) => {
-          return <NavLink to={column.path}>{column.icon}  {column.label}</NavLink>;
+          return  <NavLink to={column.path} className={({isActive}) => {return isActive?"text-amber-950 bg-amber-200" :"" }}>{column.icon}  {column.label}</NavLink>;
         },
       },
     ]);

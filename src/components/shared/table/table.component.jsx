@@ -1,15 +1,16 @@
-import TableHead from './table.head.component'
-import TableBody from './table.body.component'
+import TableHead from "./table.head.component";
+import TableBody from "./table.body.component";
+import { Table } from "@radix-ui/themes";
 
-const Table = ({rows,columns,children}) => {
+const TableComponent = ({ rows, columns, children }) => {
   return (
-    <table>
-      <TableHead columns={columns}/>
-      <TableBody rows={rows} columns={columns} >
+    <Table.Root>
+      <TableHead columns={columns} />
+      <TableBody rows={rows} columns={columns}>
         {children}
       </TableBody>
-    </table>
-  )
-}
+    </Table.Root>
+  );
+};
 
-export default Table
+export default TableComponent;

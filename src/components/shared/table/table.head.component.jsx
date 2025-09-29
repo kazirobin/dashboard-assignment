@@ -1,14 +1,14 @@
-import React from "react";
+import { Table } from "@radix-ui/themes";
 
 const TableHead = ({ columns }) => {
   return (
-    <thead>
-      <tr>
+    <Table.Header>
+      <Table.Row>
         {columns.map((column) => (
-          <th key={column.id}>{column.label}</th>
+          <Table.ColumnHeaderCell key={column.id}>{column.label}</Table.ColumnHeaderCell>
         ))}
-      </tr>
-    </thead>
+      </Table.Row>
+    </Table.Header>
   );
 };
 

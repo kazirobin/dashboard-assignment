@@ -1,39 +1,39 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import TableComponent from "../../shared/table";
 
-const Products = () => {
+const Users = () => {
   const [columns, setColumns] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [users, setUsers] = useState([]);
   useEffect(() => {
     setColumns([
       {
-        label: "Title",
-        path: "title",
+        label: "Name",
+        path: "firstName",
         content: (row, column) => <span>{row[column.path]}</span>,
       },
       {
-        label: "Category",
-        path: "category",
+        label: "Age",
+        path: "age",
         content: (row, column) => <span>{row[column.path]}</span>,
       },
     ]);
-    const promise = axios.get("https://dummyjson.com/products");
+    const promise = axios.get("https://dummyjson.com/users");
     promise
       .then((res) => {
-        setProducts(res.data.products);
-        console.log(products);
+        setUsers(res.data.users);
+        console.log(users);
       })
       .catch((error) => {
         console.error("Product Loading Failed!! : ", error.message);
       });
   }, []);
-  console.log(products);
+  console.log(users);
   console.log(columns);
   return (
     <>
       
-      <TableComponent rows={products} columns={columns}>
+      <TableComponent rows={users} columns={columns}>
         <tr>
           <td colSpan={2}>its done</td>
         </tr>
@@ -42,4 +42,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Users;

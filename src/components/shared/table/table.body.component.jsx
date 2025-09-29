@@ -1,17 +1,18 @@
 import React from "react";
+import { Table } from '@radix-ui/themes';
 
 const TableBody = ({ rows, columns, children }) => {
   return (
-    <tbody>
+    <Table.Body>
       {rows.map((row, index) => (
-        <tr key={index}>
+        <Table.Row key={index}>
           {columns.map((column) => (
-            <td key={column.id}>{column.content(row, column)}</td>
+            <Table.Cell key={column.id}>{column.content(row, column)}</Table.Cell>
           ))}
-        </tr>
+        </Table.Row>
       ))}
       {children}
-    </tbody>
+    </Table.Body>
   );
 };
 
