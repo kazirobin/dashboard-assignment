@@ -1,24 +1,20 @@
-import Sidebar from '../../shared/sidebar'
-import Navbar from '../../shared/navbar'
-import { Outlet } from 'react-router'
+import Sidebar from "../../shared/sidebar";
+import { Outlet } from "react-router";
+import NavbarComponent from "../../shared/navbar";
+import { Theme } from "@radix-ui/themes";
 
 function MainLayout() {
   return (
-    <>
-    MainLayout
-    <div className='flex'>
-
-    <Sidebar/>
-    <div>
-      
-    <Navbar/>
-<Outlet/>
-    </div>
-    </div>
-    </>
-
-
-  )
+    <Theme>
+      <div className="flex h-screen">
+        <Sidebar />
+        <div className="flex-1">
+          <NavbarComponent />
+          <Outlet />
+        </div>
+      </div>
+    </Theme>
+  );
 }
 
-export default MainLayout
+export default MainLayout;
