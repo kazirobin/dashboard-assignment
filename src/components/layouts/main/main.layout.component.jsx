@@ -6,11 +6,14 @@ import { Theme } from "@radix-ui/themes";
 function MainLayout() {
   return (
     <Theme>
-      <div className="flex h-screen">
+      <div className="flex ">
         <Sidebar />
         <div className="flex-1">
           <NavbarComponent />
+          <div className="h-screen overflow-scroll pb-40">
+
           <Outlet />
+          </div>
         </div>
       </div>
     </Theme>

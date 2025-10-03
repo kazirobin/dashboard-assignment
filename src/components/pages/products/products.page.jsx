@@ -5,7 +5,12 @@ import TableComponent from "../../shared/table";
 const Products = () => {
   const [columns, setColumns] = useState([]);
   const [products, setProducts] = useState([]);
+  
   useEffect(() => {
+    const handleProduct = (product) => {
+    setProducts(prevProducts => prevProducts.filter(item => item.id !== product.id))
+    console.log(products)
+  };
     setColumns([
       {
         label: "Title",
@@ -13,9 +18,26 @@ const Products = () => {
         content: (row, column) => <span>{row[column.path]}</span>,
       },
       {
+        label: "Images",
+        path: "images",
+        content: (row, column) => (
+          <img src={row[column.path][0]} alt="" srcset="" className="w-15" />
+        ),
+      },
+      {
         label: "Category",
         path: "category",
         content: (row, column) => <span>{row[column.path]}</span>,
+      },
+      {
+        label: "Price",
+        path: "price",
+        content: (row, column) => <span>{row[column.path]}</span>,
+      },
+      {
+        label: "",
+        path: "price",
+        content: (row, column) => <button onClick={() => { handleProduct(row) }} className="border px-2">Delete</button>,
       },
     ]);
     const promise = axios.get("https://dummyjson.com/products");
@@ -32,10 +54,11 @@ const Products = () => {
   console.log(columns);
   return (
     <>
-      
       <TableComponent rows={products} columns={columns}>
         <tr>
-          <td colSpan={2}>its done</td>
+          <td colSpan={columns.length} className="border">
+           Total product: {products.length}
+          </td>
         </tr>
       </TableComponent>
     </>
