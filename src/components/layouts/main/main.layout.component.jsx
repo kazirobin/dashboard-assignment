@@ -6,7 +6,7 @@ import { Theme } from "@radix-ui/themes";
 function MainLayout() {
   return (
     <Theme>
-      <div className="flex ">
+      <div className="flex h-screen overflow-hidden">
         <Sidebar />
         <div className="flex-1">
           <NavbarComponent />

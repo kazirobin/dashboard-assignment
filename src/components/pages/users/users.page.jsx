@@ -17,6 +17,11 @@ const Users = () => {
         path: "age",
         content: (row, column) => <span>{row[column.path]}</span>,
       },
+      {
+        label: "Gender",
+        path: "gender",
+        content: (row, column) => <span>{row[column.path]}</span>,
+      },
     ]);
     const promise = axios.get("https://dummyjson.com/users");
     promise
