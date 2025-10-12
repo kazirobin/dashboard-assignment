@@ -20,7 +20,7 @@ const NavbarComponent = () => {
 
       <Flex align="center" gap="4" className="cursor-pointer">
         <Button variant="ghost" size="2">
-          <IoIosNotifications className="text-blue-500 text-3xl" />
+          <IoIosNotifications className="text-blue-500 text-3xl"/>
         </Button>
 
         <DropdownMenu.Root content="LogOut" side="bottom">
