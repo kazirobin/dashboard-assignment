@@ -1,17 +1,17 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import TableComponent from "../../shared/table";
-import { columns } from "../../../data/products.data";
+import { getColumns } from "../../../data/products.data";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
- 
   const handleProduct = (product) => {
     setProducts((prevProducts) =>
       prevProducts.filter((item) => item.id !== product.id)
     );
     console.log(products);
   };
+  const columns = getColumns(handleProduct);
   useEffect(() => {
     const promise = axios.get("https://dummyjson.com/products");
     promise
@@ -24,7 +24,7 @@ const Products = () => {
       });
   }, []);
   console.log(products);
-  console.log(columns);
+
   return (
     <>
       <TableComponent rows={products} columns={columns}>

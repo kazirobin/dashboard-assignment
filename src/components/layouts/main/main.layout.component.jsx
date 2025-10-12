@@ -11,8 +11,7 @@ function MainLayout() {
         <div className="flex-1">
           <NavbarComponent />
           <div className="h-screen overflow-scroll pb-40">
-
-          <Outlet />
+            <Outlet />
           </div>
         </div>
       </div>

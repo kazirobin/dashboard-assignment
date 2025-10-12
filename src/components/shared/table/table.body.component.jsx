@@ -1,5 +1,5 @@
 import React from "react";
-import { Table } from '@radix-ui/themes';
+import { Flex, Table } from '@radix-ui/themes';
 
 const TableBody = ({ rows, columns, children }) => {
   return (
@@ -7,7 +7,9 @@ const TableBody = ({ rows, columns, children }) => {
       {rows.map((row, index) => (
         <Table.Row key={index}>
           {columns.map((column) => (
-            <Table.Cell key={column.id}>{column.content(row, column)}</Table.Cell>
+            <Table.Cell  key={column.id}>
+              <Flex className="h-full" align="center">{column.content(row, column)}</Flex>
+            </Table.Cell>
           ))}
         </Table.Row>
       ))}
