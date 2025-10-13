@@ -6,12 +6,12 @@ import { useState } from "react";
 
 
 function MainLayout() {
-  const [sidebarActive,setSidebarActive]=useState(false)
+  const [sidebarActive,setSidebarActive]=useState(true)
   const handleSidebar= () => { setSidebarActive(!sidebarActive) }
   return (
     <Theme>
       <div className="flex h-screen overflow-hidden">
-        {sidebarActive && <Sidebar handleSidebar={handleSidebar}/>}
+         <Sidebar sidebarActive={sidebarActive} handleSidebar={handleSidebar}/>
         
         <div className="flex-1">
           <NavbarComponent handleSidebar={handleSidebar}/>

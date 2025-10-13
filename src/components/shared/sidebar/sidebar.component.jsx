@@ -2,61 +2,21 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router";
 import { FaBoxesPacking } from "react-icons/fa6";
 import { Flex, Heading } from "@radix-ui/themes";
-const Sidebar = () => {
+import { getColumns } from "../../../data/sidebar.data";
+const Sidebar = ({ sidebarActive, handleSidebar }) => {
   const [columns, setColumns] = useState([]);
   useEffect(() => {
-    setColumns([
-      {
-        id: 1,
-        label: "Products",
-        icon: <FaBoxesPacking />,
-        path: "products",
-        content: (column) => {
-          return (
-            <NavLink
-              to={column.path}
-              className={({ isActive }) =>
-                `block rounded px-2 m-2 ${
-                  isActive ? "text-amber-950 bg-amber-200" : ""
-                }`
-              }
-            >
-              <Flex px="2" m="2" justify="center" align="center" gap="3">
-                {column.icon} {column.label}
-              </Flex>
-            </NavLink>
-          );
-        },
-      },
-      {
-        id: 2,
-        label: "Users",
-        icon: <FaBoxesPacking />,
-        path: "users",
-        content: (column) => {
-          return (
-            <NavLink
-              to={column.path}
-              className={({ isActive }) =>
-                `block rounded px-2 m-2 ${
-                  isActive ? "text-amber-950 bg-amber-200" : ""
-                }`
-              }
-            >
-              <Flex px="2" m="2" align="center" gap="3">
-                {column.icon} {column.label}
-              </Flex>
-            </NavLink>
-          );
-        },
-      },
-    ]);
-  }, []);
+    setColumns(getColumns({ sidebarActive }));
+  }, [sidebarActive]);
   return (
     <div className="bg-pink-500">
-      <Flex direction="column">
-        <Flex justify="center" py="2">
-          <Heading color="blue">Dashboard</Heading>
+      <Flex direction="column" justify="start">
+        <Flex px="6">
+          {sidebarActive ? (
+            <Heading color="blue">Dashboard</Heading>
+          ) : (
+            <Heading color="blue">D</Heading>
+          )}
         </Flex>
 
         {columns.map((column) => (

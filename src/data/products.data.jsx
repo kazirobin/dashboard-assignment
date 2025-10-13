@@ -6,13 +6,13 @@ export const getColumns = (handleProduct) => [
     path: "title",
     content: (row, column) => <span>{row[column.path]}</span>,
   },
-  {
-    label: "Images",
-    path: "images",
-    content: (row, column) => (
-      <img src={row[column.path][0]} alt="" srcset="" className="w-15" />
-    ),
-  },
+  // {
+  //   label: "Images",
+  //   path: "images",
+  //   content: (row, column) => (
+  //     <img src={row[column.path][0]} alt="" srcset="" className="w-15" />
+  //   ),
+  // },
   {
     label: "Category",
     path: "category",
