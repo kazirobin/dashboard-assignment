@@ -5,12 +5,16 @@ const NavItem = ({ column, sidebarActive }) => (
   <NavLink
     to={column.path}
     className={({ isActive }) =>
-      `block rounded px-2 m-2 ${isActive ? "text-amber-950 bg-amber-200" : ""}`
+      `block rounded px-2 py-2 m-2 relative ${isActive ? "text-amber-950 bg-amber-200" : ""}`
     }
   >
     {({ isActive }) => (
-      <Flex px="2" m="2" align="center" gap="3">
-        {column.icon} {(sidebarActive || isActive) && column.label}
+      <Flex px="2" m="2" align="center" gap="3" style={{}}>
+        {column.icon} 
+        <div className="">
+
+        {(sidebarActive || isActive) && column.label}
+        </div>
       </Flex>
     )}
   </NavLink>

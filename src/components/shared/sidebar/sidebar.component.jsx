@@ -13,9 +13,11 @@ const Sidebar = ({ sidebarActive, handleSidebar }) => {
       <Flex direction="column" justify="start">
         <Flex px="6">
           {sidebarActive ? (
-            <Heading color="blue">Dashboard</Heading>
+            <Heading color="blue" style={{ paddingBlock:"17px" }}>
+              Dashboard
+            </Heading>
           ) : (
-            <Heading color="blue">D</Heading>
+            <Heading color="blue"  style={{ paddingBlock:"17px"}}>D</Heading>
           )}
         </Flex>
 
