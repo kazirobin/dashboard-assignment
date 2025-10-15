@@ -13,7 +13,7 @@ const NavItem = ({ column, sidebarActive }) => (
         {column.icon} 
         <div className="">
 
-        {(sidebarActive || isActive) && column.label}
+        {(sidebarActive ) && column.label}
         </div>
       </Flex>
     )}
