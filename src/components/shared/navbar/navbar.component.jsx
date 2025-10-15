@@ -6,15 +6,16 @@ import {
   Text,
   TextField,
 } from "@radix-ui/themes";
+import MenuIcon from "/assets/menu.svg"
 import { FaHamburger } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { IoIosNotifications } from "react-icons/io";
 
 const NavbarComponent = ({ handleSidebar }) => {
   return (
-    <Flex justify="between" align="center" className="bg-amber-300 p-4" gap="4">
-      <Button onClick={handleSidebar}>
-        <FaHamburger />
+    <Flex justify="between" align="center" className="bg-amber-400 p-4" gap="4">
+      <Button color="amber"  onClick={handleSidebar}>
+        <img src={MenuIcon} alt="" className="cursor-pointer text-white"/>
       </Button>
       <TextField.Root placeholder="Search..." size="2">
         <TextField.Slot>
@@ -31,7 +32,7 @@ const NavbarComponent = ({ handleSidebar }) => {
           <DropdownMenu.Trigger>
             <Button variant="ghost">
 
-            <Flex gap="6px" align="center">
+            <Flex gap="6px" align="center" className="cursor-pointer">
               <Avatar
                 src="https://avatars.githubusercontent.com/u/110531952?v=4"
                 fallback="K"

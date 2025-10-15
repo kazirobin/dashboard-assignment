@@ -7,8 +7,8 @@ const TableComponent = ({ rows, columns, children }) => {
     <Table.Root>
       <TableHead columns={columns} />
       <TableBody rows={rows} columns={columns}>
-        {children}
       </TableBody>
+        {children}
     </Table.Root>
   );
 };
