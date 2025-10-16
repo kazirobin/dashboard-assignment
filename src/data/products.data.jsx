@@ -1,6 +1,6 @@
 import { Button } from "@radix-ui/themes";
 
-export const getColumns = (handleProduct) => [
+export const getColumns = (handleProductDelete) => [
   {
     label: "Title",
     path: "title",
@@ -25,11 +25,11 @@ export const getColumns = (handleProduct) => [
   },
   {
     label: "",
-    path: "price",
+    path: "action",
     content: (row, column) => (
       <Button color="tomato"
         onClick={() => {
-          handleProduct(row);
+          handleProductDelete(row);
         }}
         style={{cursor:"pointer"}}
       >
