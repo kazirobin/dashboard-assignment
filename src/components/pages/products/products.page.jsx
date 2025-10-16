@@ -26,8 +26,11 @@ const Products = () => {
         category: newProduct.category,
         price: parseFloat(newProduct.price),
       });
-
-      setProducts((prev) => [...prev, response.data]);
+      const newProductWithId = {
+        ...response.data,
+        id: Date.now(),
+      };
+      setProducts((prev) => [...prev, newProductWithId]);
       setNewProduct({
         title: "",
         category: "",
@@ -44,7 +47,6 @@ const Products = () => {
     setProducts((prevProducts) =>
       prevProducts.filter((item) => item.id !== product.id)
     );
-    await axios.delete(`https://dummyjson.com/products/${product.id}`);
   };
 
   const columns = getColumns(handleProductDelete);
