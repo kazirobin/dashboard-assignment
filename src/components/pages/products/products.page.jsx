@@ -97,6 +97,7 @@ const Products = () => {
                 placeholder="Product Price"
                 name="price"
                 value={newProduct.price}
+                type="number"
                 onChange={(e) =>
                   setNewProduct({ ...newProduct, price: e.target.value })
                 }
