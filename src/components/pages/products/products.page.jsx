@@ -41,10 +41,10 @@ const Products = () => {
     }
   };
   const handleProductDelete = async (product) => {
-    await axios.delete(`https://dummyjson.com/products/${product.id}`);
     setProducts((prevProducts) =>
       prevProducts.filter((item) => item.id !== product.id)
     );
+    await axios.delete(`https://dummyjson.com/products/${product.id}`);
   };
 
   const columns = getColumns(handleProductDelete);
