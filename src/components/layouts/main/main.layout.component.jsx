@@ -14,7 +14,7 @@ function MainLayout() {
          <Sidebar sidebarActive={sidebarActive} handleSidebar={handleSidebar}/>
         
         <div className="flex-1">
-          <NavbarComponent handleSidebar={handleSidebar}/>
+          <NavbarComponent handleSidebar={handleSidebar} sidebarActive={sidebarActive}/>
           <div className="h-screen overflow-scroll pb-40">
             <Outlet />
           </div>

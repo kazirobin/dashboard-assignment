@@ -6,17 +6,19 @@ import {
   Text,
   TextField,
 } from "@radix-ui/themes";
-import MenuIcon from "/assets/menu.svg"
+import MenuIcon from "/assets/menu.svg";
 import { FaHamburger } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { IoIosNotifications } from "react-icons/io";
 
-const NavbarComponent = ({ handleSidebar }) => {
+const NavbarComponent = ({ handleSidebar, sidebarActive }) => {
   return (
     <Flex justify="between" align="center" className="bg-amber-400 p-4" gap="4">
-      <Button color="amber"  onClick={handleSidebar}>
-        <img src={MenuIcon} alt="" className="cursor-pointer text-white"/>
-      </Button>
+      {sidebarActive && (
+        <Button color="amber" onClick={handleSidebar}>
+          <img src={MenuIcon} alt="" className="cursor-pointer text-white" />
+        </Button>
+      )}
       <TextField.Root placeholder="Search..." size="2">
         <TextField.Slot>
           <FaMagnifyingGlass />
@@ -31,17 +33,16 @@ const NavbarComponent = ({ handleSidebar }) => {
         <DropdownMenu.Root>
           <DropdownMenu.Trigger>
             <Button variant="ghost">
-
-            <Flex gap="6px" align="center" className="cursor-pointer">
-              <Avatar
-                src="https://avatars.githubusercontent.com/u/110531952?v=4"
-                fallback="K"
-                size="2"
-                radius="full"
+              <Flex gap="6px" align="center" className="cursor-pointer">
+                <Avatar
+                  src="https://avatars.githubusercontent.com/u/110531952?v=4"
+                  fallback="K"
+                  size="2"
+                  radius="full"
                 />
-              <Text>Kazi Robin</Text>
-            </Flex>
-                </Button>
+                <Text>Kazi Robin</Text>
+              </Flex>
+            </Button>
           </DropdownMenu.Trigger>
           <DropdownMenu.Content
             style={{ marginTop: "6px", marginInlineStart: "8px" }}

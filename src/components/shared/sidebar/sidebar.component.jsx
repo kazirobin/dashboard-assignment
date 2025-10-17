@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import MenuIcon from "/assets/menu.svg";
+
 import { NavLink } from "react-router";
 import { FaBoxesPacking } from "react-icons/fa6";
-import { Flex, Heading } from "@radix-ui/themes";
+import { Button, Flex, Heading } from "@radix-ui/themes";
 import { getColumns } from "../../../data/sidebar.data";
 const Sidebar = ({ sidebarActive, handleSidebar }) => {
   const [columns, setColumns] = useState([]);
@@ -17,7 +19,9 @@ const Sidebar = ({ sidebarActive, handleSidebar }) => {
               Dashboard
             </Heading>
           ) : (
-            <Heading color="blue"  style={{ paddingBlock:"17px"}}>D</Heading>
+              <Button color="amber" onClick={handleSidebar}>
+        <img src={MenuIcon} alt="" className="cursor-pointer text-white" />
+      </Button>
           )}
         </Flex>
 
