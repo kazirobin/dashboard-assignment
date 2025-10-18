@@ -2,15 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import TableComponent from "../../shared/table";
 import { getColumns } from "../../../data/products.data";
-import {
-  Button,
-  Dialog,
-  Flex,
-  Heading,
-  Text,
-  TextField,
-} from "@radix-ui/themes";
-import { BiPlus } from "react-icons/bi";
+import {  Flex, Text } from "@radix-ui/themes";
+import AddProduct from "./add.product";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -19,18 +12,18 @@ const Products = () => {
     category: "",
     price: "",
   });
-  const handleNewProduct = async () => {
+  const handleNewProduct = async (values) => {
     try {
       const response = await axios.post("https://dummyjson.com/products/add", {
-        title: newProduct.title,
-        category: newProduct.category,
-        price: parseFloat(newProduct.price),
+        title: values.title,
+        category: values.category,
+        price: parseFloat(values.price),
       });
       const newProductWithId = {
         ...response.data,
         id: Date.now(),
       };
-      setProducts((prev) => [...prev, newProductWithId]);
+      setProducts((prev) => [newProductWithId, ...prev]);
       setNewProduct({
         title: "",
         category: "",
@@ -64,57 +57,21 @@ const Products = () => {
   console.log(products);
 
   return (
-    <>
-      <Flex align="center" justify="between" px="9" py="3">
-        Total product: {products.length}
-        <Dialog.Root>
-          <Dialog.Trigger>
-            <Button>
-              <Text className="cursor-pointer flex items-center gap-1">
-                <BiPlus /> Add Product
-              </Text>
-            </Button>
-          </Dialog.Trigger>
-
-          <Dialog.Content>
-            <Dialog.Title>Add a Product</Dialog.Title>
-            <Flex direction="column" gap="3">
-              <TextField.Root
-                placeholder="Product Title"
-                name="title"
-                value={newProduct.title}
-                onChange={(e) =>
-                  setNewProduct({ ...newProduct, title: e.target.value })
-                }
-              />
-              <TextField.Root
-                placeholder="Product Category"
-                name="category"
-                value={newProduct.category}
-                onChange={(e) =>
-                  setNewProduct({ ...newProduct, category: e.target.value })
-                }
-              />
-              <TextField.Root
-                placeholder="Product Price"
-                name="price"
-                value={newProduct.price}
-                type="number"
-                onChange={(e) =>
-                  setNewProduct({ ...newProduct, price: e.target.value })
-                }
-              />
-            </Flex>
-            <Dialog.Close>
-              <Button mt="3" onClick={handleNewProduct}>
-                <Text className="cursor-pointer">Save</Text>
-              </Button>
-            </Dialog.Close>
-          </Dialog.Content>
-        </Dialog.Root>
+    <div className="w-full overflow-hidden">
+      <Flex
+        width="100%"
+        className="bg-amber-400 z-10"
+        align="center"
+        justify="between"
+        px="9"
+        py="3"
+      >
+        <Text className="">Total product: {products.length}</Text>
+        <AddProduct handleNewProduct={handleNewProduct} />
       </Flex>
+
       <TableComponent rows={products} columns={columns}></TableComponent>
-    </>
+    </div>
   );
 };
 

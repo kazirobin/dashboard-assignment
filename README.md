@@ -1,6 +1,8 @@
 - dynamic button
-- update product
+- update/edit product
 - ui same as figma
-- formik for form and required validity
 - pagination 
 - table column width problem fix 
+
+
+- formik for form and required validity 🆗
