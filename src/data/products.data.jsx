@@ -1,6 +1,6 @@
-import { Button } from "@radix-ui/themes";
+import { Button, Flex } from "@radix-ui/themes";
 
-export const getColumns = (handleProductDelete) => [
+export const getColumns = (handleProductDelete,handleEditProduct) => [
   {
     label: "Title",
     path: "title",
@@ -24,17 +24,27 @@ export const getColumns = (handleProductDelete) => [
     content: (row, column) => <span>{row[column.path]}</span>,
   },
   {
-    label: "",
+    label: "Action",
     path: "action",
     content: (row, column) => (
+      <Flex gap="3">
       <Button color="tomato"
         onClick={() => {
-          handleProductDelete(row);
+          handleProductDelete(row)
         }}
         style={{cursor:"pointer"}}
       >
         Delete
       </Button>
+      <Button color="blue"
+        onClick={() => {
+          handleEditProduct(row);
+        }}
+        style={{cursor:"pointer"}}
+      >
+        Edit
+      </Button>
+      </Flex>
     ),
   },
 ];

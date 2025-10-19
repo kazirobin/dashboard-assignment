@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import TableComponent from "../../shared/table";
 import { getColumns } from "../../../data/products.data";
-import {  Flex, Text } from "@radix-ui/themes";
+import { Flex, Text } from "@radix-ui/themes";
 import AddProduct from "./add.product";
 
 const Products = () => {
@@ -29,20 +29,21 @@ const Products = () => {
         category: "",
         price: "",
       });
-
       console.log("Product added successfully:", response.data);
     } catch (error) {
       console.error("Failed to add product:", error);
       alert("Failed to add product. Please try again.");
     }
   };
+  const handleEditProduct = (product) => {console.log("handleEditProduct calling...",product);
+   }
   const handleProductDelete = async (product) => {
     setProducts((prevProducts) =>
       prevProducts.filter((item) => item.id !== product.id)
     );
   };
 
-  const columns = getColumns(handleProductDelete);
+  const columns = getColumns(handleProductDelete,handleEditProduct);
   useEffect(() => {
     const promise = axios.get("https://dummyjson.com/products");
     promise
