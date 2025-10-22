@@ -140,7 +140,7 @@ export default Products;
 - **DELETE API Call**: Uses `axios.delete()` to simulate deletion
 - **Soft Delete**: Instead of removing from array, marks as `isDeleted: true`
 - **Filtering**: Only shows products where `isDeleted` is false
-- **API Response**: The dummyjson API returns the deleted product with `isDeleted: true` and `deletedOn` properties
+- **API Response**: The dummy json API returns the deleted product with `isDeleted: true` and `deletedOn` properties
 
 Now when you delete a product:
 1. It calls the DELETE API

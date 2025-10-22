@@ -1,6 +1,7 @@
 import { Flex } from "@radix-ui/themes";
 import { FaBoxesPacking } from "react-icons/fa6";
 import { NavLink } from "react-router";
+import Icon from "../components/shared/icon/icon.component";
 const NavItem = ({ column, sidebarActive }) => (
   <NavLink
     to={column.path}
@@ -9,12 +10,12 @@ const NavItem = ({ column, sidebarActive }) => (
     }
   >
     {({ isActive }) => (
-      <Flex px="2" m="2" align="center" gap="3" style={{}}>
+      <Flex  align="center"  style={{}}>
         {column.icon} 
-        <div className="">
+        
 
-        {(sidebarActive ) && column.label}
-        </div>
+        {(sidebarActive ) && <div className="ps-4">{column.label}</div>}
+        
       </Flex>
     )}
   </NavLink>
@@ -24,7 +25,7 @@ export const getColumns = ({ sidebarActive }) => [
   {
     id: 1,
     label: "Products",
-    icon: <FaBoxesPacking />,
+    icon: <Icon src="/public/assets/dashboard.svg" />,
     path: "products",
     content: (column) => {
       return <NavItem column={column} sidebarActive={sidebarActive} />;
@@ -33,7 +34,7 @@ export const getColumns = ({ sidebarActive }) => [
   {
     id: 2,
     label: "Users",
-    icon: <FaBoxesPacking />,
+    icon: <Icon src="/public/assets/product.svg" styles="text-red-400 strick-red-400"/>,
     path: "users",
     content: (column) => {
       return <NavItem column={column} sidebarActive={sidebarActive} />;

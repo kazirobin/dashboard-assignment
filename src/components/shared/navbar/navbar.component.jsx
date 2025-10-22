@@ -13,7 +13,7 @@ import { IoIosNotifications } from "react-icons/io";
 
 const NavbarComponent = ({ handleSidebar, sidebarActive }) => {
   return (
-    <Flex justify="between" align="center" className="bg-amber-400 p-4" gap="4">
+    <Flex justify="between" align="center" className=" h-20" gap="4">
       {sidebarActive && (
         <Button color="amber" onClick={handleSidebar}>
           <img src={MenuIcon} alt="" className="cursor-pointer text-white" />
@@ -22,6 +22,7 @@ const NavbarComponent = ({ handleSidebar, sidebarActive }) => {
       <TextField.Root placeholder="Search..." size="2">
         <TextField.Slot>
           <FaMagnifyingGlass />
+          
         </TextField.Slot>
       </TextField.Root>
 
@@ -29,6 +30,7 @@ const NavbarComponent = ({ handleSidebar, sidebarActive }) => {
         <Button variant="ghost" size="2">
           <IoIosNotifications className="text-blue-500 text-3xl" />
         </Button>
+
 
         <DropdownMenu.Root>
           <DropdownMenu.Trigger>

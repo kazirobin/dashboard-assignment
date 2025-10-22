@@ -2,9 +2,7 @@
 - update/edit product
 - ui same as figma
 - pagination 
-- table column width problem fix
-- dynamic icon in navbar
-- dynamic button in page table 
+- table column width problem fix 
 
 
 - formik for form and required validity 🆗
