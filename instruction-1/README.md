@@ -160,11 +160,11 @@ const AddProduct = ({ handleNewProduct, editingProduct, handleUpdateProduct }) =
       }
     }}>
       <Dialog.Trigger>
-        <Button>
+        <DynamicButton>
           <Text className="cursor-pointer flex items-center gap-1">
             <BiPlus /> Add Product
           </Text>
-        </Button>
+        </DynamicButton>
       </Dialog.Trigger>
 
       <Dialog.Content>

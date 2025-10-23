@@ -1,7 +1,7 @@
-const Icon = ({ src,styles }) => {
+const Icon = ({ src,styles,onClick }) => {
   return(
 
-    <img src={src} alt="" srcset="" className={`${styles} inline`}/>
+    <img src={src} alt="" srcSet="" className={`${styles} inline`} onClick={onClick}/>
   )
 };
 

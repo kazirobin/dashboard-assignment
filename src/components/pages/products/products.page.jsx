@@ -12,9 +12,9 @@ const Products = () => {
     category: "",
     price: "",
   });
-  const handleNewProduct = async (values) => {
+  const handleNewProduct = (values) => {
     try {
-      const response = await axios.post("https://dummyjson.com/products/add", {
+      const response = axios.post("https://dummyjson.com/products/add", {
         title: values.title,
         category: values.category,
         price: parseFloat(values.price),
@@ -35,15 +35,38 @@ const Products = () => {
       alert("Failed to add product. Please try again.");
     }
   };
-  const handleEditProduct = (product) => {console.log("handleEditProduct calling...",product);
-   }
+  const handleEditProduct = (productId, updatedValues) => {
+    try {
+      axios.put(`https://dummyjson.com/products/${productId}`, {
+        title: updatedValues.title,
+        category: updatedValues.category,
+        price: parseFloat(updatedValues.price),
+      });
+      setProducts((prevProducts) =>
+        prevProducts.map((product) =>
+          product.id === productId
+            ? {
+                ...product,
+                ...updatedValues,
+                price: parseFloat(updatedValues.price),
+              }
+            : product
+        )
+      );
+      console.log("Product updated successfully:", updatedValues);
+    } catch (error) {
+      console.error("Failed to update product:", error);
+      alert("Failed to update product. Please try again.");
+    }
+  };
   const handleProductDelete = async (product) => {
+    axios.delete(`https://dummyjson.com/products/${product.id}`);
     setProducts((prevProducts) =>
       prevProducts.filter((item) => item.id !== product.id)
     );
   };
 
-  const columns = getColumns(handleProductDelete,handleEditProduct);
+  const columns = getColumns(handleProductDelete, handleEditProduct);
   useEffect(() => {
     const promise = axios.get("https://dummyjson.com/products");
     promise

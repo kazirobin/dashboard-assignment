@@ -1,48 +1,61 @@
 import { Button, Dialog, Text } from "@radix-ui/themes";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { BiPlus } from "react-icons/bi";
-import DynamicButton from "../../shared/dynamicButton/dynamicButton.component";
 
-const AddProduct = ({ handleNewProduct }) => {
+const EditProduct = ({ product, handleEditProduct }) => {
   return (
     <Dialog.Root>
       <Dialog.Trigger>
-        <DynamicButton color="bg-blue-600" icon={<BiPlus />} btnText="Add Product" />
-         
-        
+        <Button color="blue" style={{ cursor: "pointer" }}>
+          Edit
+        </Button>
       </Dialog.Trigger>
 
       <Dialog.Content>
-        <Dialog.Title>Add a Product</Dialog.Title>
+        <Dialog.Title>Edit Product</Dialog.Title>
+        <Dialog.Description>
+          Update the product information below.
+        </Dialog.Description>
         <Formik
-          initialValues={{ title: "", category: "", price: "" }}
+          initialValues={{
+            title: product?.title || "",
+            category: product?.category || "",
+            price: product?.price || "",
+          }}
           onSubmit={(values, { setSubmitting }) => {
-            handleNewProduct(values);
+            handleEditProduct(product.id, values);
             setSubmitting(false);
           }}
         >
           {({ isSubmitting }) => (
             <Form className="flex flex-col gap-2">
-              <Field className="p-2 border-b focus:outline-none border-b-blue-400"
+              <Field
+                className="p-2 border-b focus:outline-none border-b-blue-400"
                 required
                 type="text"
                 placeholder="Product title"
                 name="title"
               />
               <ErrorMessage name="title" component="div" />
-              <Field className="p-2 border-b focus:outline-none border-b-blue-400"
+              <Field
+                className="p-2 border-b focus:outline-none border-b-blue-400"
                 required
                 type="text"
                 placeholder="Category"
                 name="category"
               />
               <ErrorMessage name="category" component="div" />
-              <Field className="p-2 border-b focus:outline-none border-b-blue-400" required type="number" placeholder="price" name="price" />
+              <Field
+                className="p-2 border-b focus:outline-none border-b-blue-400"
+                required
+                type="number"
+                placeholder="price"
+                name="price"
+              />
               <ErrorMessage name="price" component="div" />
               <Dialog.Close>
                 <Button mt="3" type="submit" disabled={isSubmitting}>
                   <Text className="cursor-pointer w-full">
-                    {isSubmitting ? "Adding..." : "Add Product"}
+                    {isSubmitting ? "Updating..." : "Update Product"}
                   </Text>
                 </Button>
               </Dialog.Close>
@@ -54,4 +67,4 @@ const AddProduct = ({ handleNewProduct }) => {
   );
 };
 
-export default AddProduct;
+export default EditProduct;

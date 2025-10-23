@@ -1,4 +1,5 @@
 import { Button, Flex } from "@radix-ui/themes";
+import EditProduct from "../components/pages/products/edit.product";
 
 export const getColumns = (handleProductDelete,handleEditProduct) => [
   {
@@ -36,14 +37,8 @@ export const getColumns = (handleProductDelete,handleEditProduct) => [
       >
         Delete
       </Button>
-      <Button color="blue"
-        onClick={() => {
-          handleEditProduct(row);
-        }}
-        style={{cursor:"pointer"}}
-      >
-        Edit
-      </Button>
+     
+        <EditProduct product={row} handleEditProduct={handleEditProduct}/>
       </Flex>
     ),
   },

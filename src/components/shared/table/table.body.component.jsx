@@ -6,8 +6,8 @@ const TableBody = ({ rows, columns, children }) => {
     <Table.Body>
       {rows.map((row, index) => (
         <Table.Row key={index}>
-          {columns.map((column) => (
-            <Table.Cell  key={column.id}>
+          {columns.map((column,index) => (
+            <Table.Cell  key={index}>
               <Flex className="h-full" align="center">{column.content(row, column)}</Flex>
             </Table.Cell>
           ))}

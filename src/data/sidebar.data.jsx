@@ -6,7 +6,7 @@ const NavItem = ({ column, sidebarActive }) => (
   <NavLink
     to={column.path}
     className={({ isActive }) =>
-      `block rounded px-2 py-2 m-2 relative ${isActive ? "text-amber-950 bg-amber-200" : ""}`
+      `block rounded px-3 py-2 m-2 border-l-3 border-amber-50  hover:bg-gray-200 relative ${isActive ? "text-amber-950   bg-gray-100 border-l-blue-600" : "hover:border-l-gray-400"}`
     }
   >
     {({ isActive }) => (

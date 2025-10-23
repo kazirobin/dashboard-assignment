@@ -3,7 +3,7 @@ import MenuIcon from "/assets/menu.svg";
 import { Button, Flex, Heading } from "@radix-ui/themes";
 import { getColumns } from "../../../data/sidebar.data";
 import { NavLink } from "react-router";
-import Icon from './../icon/icon.component';
+import Icon from "./../icon/icon.component";
 const Sidebar = ({ sidebarActive, handleSidebar }) => {
   const [columns, setColumns] = useState([]);
   useEffect(() => {
@@ -12,17 +12,13 @@ const Sidebar = ({ sidebarActive, handleSidebar }) => {
   return (
     <div>
       <Flex direction="column" justify="start">
-        <Flex justify="center" align="center" className="cursor-pointer  h-18 border">
+        <Flex justify="center" align="center" className="cursor-pointer h-18">
           {sidebarActive ? (
-            <NavLink to="/"><Icon src="/assets/Logo.png" styles="border ps-6"/></NavLink>
+            <NavLink to="/">
+              <Icon src="/assets/Logo.png" styles="ps-6" />
+            </NavLink>
           ) : (
-            <Button color="amber" onClick={handleSidebar}>
-              <img
-                src={MenuIcon}
-                alt=""
-                className="cursor-pointer text-white"
-              />
-            </Button>
+            <Icon src={MenuIcon} onClick={handleSidebar} />
           )}
         </Flex>
 

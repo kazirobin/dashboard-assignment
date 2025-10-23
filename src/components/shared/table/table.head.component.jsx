@@ -4,8 +4,8 @@ const TableHead = ({ columns }) => {
   return (
     <Table.Header>
       <Table.Row>
-        {columns.map((column) => (
-          <Table.ColumnHeaderCell key={column.id}>{column.label}</Table.ColumnHeaderCell>
+        {columns.map((column,index) => (
+          <Table.ColumnHeaderCell key={index}>{column.label}</Table.ColumnHeaderCell>
         ))}
       </Table.Row>
     </Table.Header>

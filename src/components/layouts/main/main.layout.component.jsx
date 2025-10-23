@@ -11,9 +11,8 @@ function MainLayout() {
   };
   return (
     <Theme>
-      <div className="flex h-screen p-4 overflow-hidden">
-
-        <div className="bg-pink-500">
+      <div className="flex h-screen max-w-7xl mx-auto py-4 overflow-hidden">
+        <div className="">
           <Sidebar
             sidebarActive={sidebarActive}
             handleSidebar={handleSidebar}
@@ -21,7 +20,6 @@ function MainLayout() {
         </div>
 
         <div className="flex-1">
-
           <div>
             <NavbarComponent
               handleSidebar={handleSidebar}
@@ -32,7 +30,6 @@ function MainLayout() {
           <div className="h-screen overflow-scroll pb-40">
             <Outlet />
           </div>
-
         </div>
       </div>
     </Theme>
