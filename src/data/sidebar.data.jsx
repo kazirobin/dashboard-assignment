@@ -25,7 +25,7 @@ export const getColumns = ({ sidebarActive }) => [
   {
     id: 1,
     label: "Products",
-    icon: <Icon src="/public/assets/dashboard.svg" />,
+    icon: <Icon src="/assets/dashboard.svg" />,
     path: "products",
     content: (column) => {
       return <NavItem column={column} sidebarActive={sidebarActive} />;
@@ -34,7 +34,7 @@ export const getColumns = ({ sidebarActive }) => [
   {
     id: 2,
     label: "Users",
-    icon: <Icon src="/public/assets/product.svg" styles="text-red-400 strick-red-400"/>,
+    icon: <Icon src="/assets/product.svg" styles="text-red-400 strick-red-400"/>,
     path: "users",
     content: (column) => {
       return <NavItem column={column} sidebarActive={sidebarActive} />;
