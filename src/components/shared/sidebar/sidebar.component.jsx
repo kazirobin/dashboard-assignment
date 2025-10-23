@@ -14,7 +14,7 @@ const Sidebar = ({ sidebarActive, handleSidebar }) => {
       <Flex direction="column" justify="start">
         <Flex justify="center" align="center" className="cursor-pointer  h-18 border">
           {sidebarActive ? (
-            <NavLink to="/"><Icon src="/public/assets/Logo.png" styles="border ps-6"/></NavLink>
+            <NavLink to="/"><Icon src="/assets/Logo.png" styles="border ps-6"/></NavLink>
           ) : (
             <Button color="amber" onClick={handleSidebar}>
               <img
