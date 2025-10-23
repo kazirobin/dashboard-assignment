@@ -4,7 +4,7 @@ import Icon from "../../shared/icon/icon.component";
 const Home = () => {
   return <div>This is Home Page
 
-    <Text>hello <Icon src="/public/assets/menu.svg"/></Text>
+    <Text>hello <Icon src="/assets/menu.svg"/></Text>
   </div>;
 };
 
