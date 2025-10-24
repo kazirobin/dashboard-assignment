@@ -197,7 +197,11 @@ This project is open-source under the [MIT License](LICENSE).
 
 ---
 
-Would you like me to **customize this README with your repository name and project title**, or include **badges (like React, Formik, Vite, etc.)** for a more professional GitHub look?
+ Would you like me to `
+ **customize this README with your repository name and project title**,
+ or include 
+ **badges (like React, Formik, Vite, etc.)** 
+ for a more professional GitHub look?
 
 - dynamic button
 - ui same as figma

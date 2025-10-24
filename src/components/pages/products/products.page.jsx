@@ -12,9 +12,9 @@ const Products = () => {
     category: "",
     price: "",
   });
-  const handleNewProduct = (values) => {
+  const handleNewProduct =async (values) => {
     try {
-      const response = axios.post("https://dummyjson.com/products/add", {
+      const response =await axios.post("https://dummyjson.com/products/add", {
         title: values.title,
         category: values.category,
         price: parseFloat(values.price),
