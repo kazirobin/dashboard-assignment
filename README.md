@@ -181,7 +181,7 @@ export const router = createBrowserRouter([
 Example:
 
 ```
-![Dashboard Preview](./public/screenshot/dashboard.png)
+![Dashboard Preview](./dashboard-preview.png)
 ```
 
 ---
