@@ -11,7 +11,7 @@ function MainLayout() {
   };
   return (
     <Theme>
-      <div className="flex h-screen max-w-7xl mx-auto py-4 overflow-hidden">
+      <div className="flex h-screen max-w-screen mx-auto p-4  overflow-hidden">
         <div className="">
           <Sidebar
             sidebarActive={sidebarActive}
