@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import TableComponent from "../../shared/table";
-import { getColumns } from "../../../data/products.data";
+import TableComponent from "../../components/common/table";
 import { Flex, Text } from "@radix-ui/themes";
 import AddProduct from "./add.product";
+import { getColumns } from './../../data/products.data';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -12,9 +12,9 @@ const Products = () => {
     category: "",
     price: "",
   });
-  const handleNewProduct =async (values) => {
+  const handleNewProduct = async (values) => {
     try {
-      const response =await axios.post("https://dummyjson.com/products/add", {
+      const response = await axios.post("https://dummyjson.com/products/add", {
         title: values.title,
         category: values.category,
         price: parseFloat(values.price),

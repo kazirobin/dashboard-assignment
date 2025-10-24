@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import TableComponent from "../../shared/table";
+import TableComponent from "../../components/common/table";
 
 const Users = () => {
   const [columns, setColumns] = useState([]);
@@ -37,7 +37,6 @@ const Users = () => {
   console.log(columns);
   return (
     <>
-      
       <TableComponent rows={users} columns={columns}>
         <tr>
           <td colSpan={2}>its done</td>

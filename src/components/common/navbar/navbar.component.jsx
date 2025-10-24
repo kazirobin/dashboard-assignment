@@ -10,29 +10,34 @@ import MenuIcon from "/assets/menu.svg";
 import { FaHamburger } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { IoIosNotifications } from "react-icons/io";
-import Icon from "../icon/icon.component";
+import Icon from "../dynamicIcon/dynamicIcon.component";
 
 const NavbarComponent = ({ handleSidebar, sidebarActive }) => {
   return (
     <Flex justify="between" align="center" className=" h-20" gap="4">
       <Flex>
-
-      {sidebarActive && (
-        <Icon src={MenuIcon} styles="px-2 cursor-pointer"  onClick={handleSidebar}/>
-      )}
-      <TextField.Root placeholder="Search..." size="2" className="border-0 outline-0 border-amber-500">
-        <TextField.Slot>
-          <FaMagnifyingGlass />
-          
-        </TextField.Slot>
-      </TextField.Root>
+        {sidebarActive && (
+          <Icon
+            src={MenuIcon}
+            styles="px-2 cursor-pointer"
+            onClick={handleSidebar}
+          />
+        )}
+        <TextField.Root
+          placeholder="Search..."
+          size="2"
+          className="border-0 outline-0 border-amber-500"
+        >
+          <TextField.Slot>
+            <FaMagnifyingGlass />
+          </TextField.Slot>
+        </TextField.Root>
       </Flex>
 
       <Flex align="center" gap="4" className="cursor-pointer">
         <Button variant="ghost" size="2">
           <IoIosNotifications className="text-blue-500 text-3xl" />
         </Button>
-
 
         <DropdownMenu.Root>
           <DropdownMenu.Trigger>

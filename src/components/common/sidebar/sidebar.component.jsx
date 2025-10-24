@@ -3,7 +3,7 @@ import MenuIcon from "/assets/menu.svg";
 import { Button, Flex, Heading } from "@radix-ui/themes";
 import { getColumns } from "../../../data/sidebar.data";
 import { NavLink } from "react-router";
-import Icon from "./../icon/icon.component";
+import Icon from "../dynamicIcon/dynamicIcon.component";
 const Sidebar = ({ sidebarActive, handleSidebar }) => {
   const [columns, setColumns] = useState([]);
   useEffect(() => {

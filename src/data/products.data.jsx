@@ -1,5 +1,5 @@
 import { Button, Flex } from "@radix-ui/themes";
-import EditProduct from "../components/pages/products/edit.product";
+import EditProduct from "./../pages/products/edit.product";
 
 export const getColumns = (handleProductDelete,handleEditProduct) => [
   {

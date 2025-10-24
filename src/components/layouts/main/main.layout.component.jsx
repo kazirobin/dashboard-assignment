@@ -1,6 +1,6 @@
-import Sidebar from "../../shared/sidebar";
+import Sidebar from "../../common/sidebar";
 import { Outlet } from "react-router";
-import NavbarComponent from "../../shared/navbar";
+import NavbarComponent from "../../common/navbar";
 import { Theme } from "@radix-ui/themes";
 import { useState } from "react";
 
