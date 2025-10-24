@@ -176,13 +176,9 @@ export const router = createBrowserRouter([
 
 ## 📸 UI Preview
 
-> *(Optional: Add screenshots or GIFs from your Figma design or actual app here)*
 
-Example:
-
-```
 ![Dashboard Preview](./dashboard-preview.png)
-```
+
 
 ---
 
