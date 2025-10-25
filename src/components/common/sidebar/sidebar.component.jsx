@@ -12,7 +12,7 @@ const Sidebar = ({ sidebarActive, handleSidebar }) => {
   }, [sidebarActive]);
   return (
     <div>
-      <Flex direction="column">
+      <Flex direction="column" className={`${!sidebarActive && "items-center"}`}>
         <Flex align="center" className="cursor-pointer h-18 ps-1">
           {sidebarActive ? (
             <NavLink to="/">
