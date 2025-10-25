@@ -17,7 +17,7 @@ const NavItem = ({ column, sidebarActive }) => (
     {({ isActive }) => (
       <Flex align="center" className={ `h-10 rounded-sm ${isActive ? "bg-blue-600 text-white " :"hover:bg-gray-300 hover:text-blue-800"}`} style={{}}>
         
-        {sidebarActive ? <div className="px-4">{column.icon}</div> :<div className="p-4 rounded-4 bg-white text-blue-600 ps-0">{column.icon}</div>}
+        {sidebarActive ? <div className="px-4">{column.icon}</div> :<div className={`p-4 rounded-4 bg-white ps-0 ${isActive ? "text-blue-600" : ""}`}>{column.icon}</div>}
         {sidebarActive && <div className="pe-3">{column.label}</div>}
       </Flex>
     )}
