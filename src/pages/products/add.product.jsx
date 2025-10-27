@@ -1,66 +1,64 @@
-import { Button, Dialog, Text } from "@radix-ui/themes";
-import { ErrorMessage, Field, Form, Formik } from "formik";
 import { BiPlus } from "react-icons/bi";
 import DynamicButton from "../../components/common/dynamicButton";
+import DynamicDialog from "../../components/common/dynamicDialog";
+import { number, object, string } from "yup";
 
 const AddProduct = ({ handleNewProduct }) => {
+  const onSubmit = (values, { setSubmitting }) => {
+    handleNewProduct(values);
+    setSubmitting(false);
+  };
+
+  const fields = [
+    {
+      name: "title",
+      type: "text",
+      placeholder: "Product title",
+      required: true,
+    },
+    {
+      name: "category",
+      type: "text",
+      placeholder: "Category",
+      required: true,
+    },
+    {
+      name: "price",
+      type: "number",
+      placeholder: "Price",
+      required: true,
+    },
+  ];
+
+  const validationSchema = object({
+    title: string().required("Title is required"),
+    category: string().required("Category is required"),
+    price: number()
+      .required("Price is required")
+      .positive("Price must be positive"),
+  });
+
   return (
-    <Dialog.Root>
-      <Dialog.Trigger>
+    <DynamicDialog
+      fields={fields}
+      trigger={
         <DynamicButton
           color="bg-blue-600"
           icon={<BiPlus />}
           btnText="Add Product"
         />
-      </Dialog.Trigger>
-
-      <Dialog.Content>
-        <Dialog.Title>Add a Product</Dialog.Title>
-        <Formik
-          initialValues={{ title: "", category: "", price: "" }}
-          onSubmit={(values, { setSubmitting }) => {
-            handleNewProduct(values);
-            setSubmitting(false);
-          }}
-        >
-          {({ isSubmitting }) => (
-            <Form className="flex flex-col gap-2">
-              <Field
-                className="p-2 border-b focus:outline-none border-b-blue-400"
-                required
-                type="text"
-                placeholder="Product title"
-                name="title"
-              />
-              <ErrorMessage name="title" component="div" />
-              <Field
-                className="p-2 border-b focus:outline-none border-b-blue-400"
-                required
-                type="text"
-                placeholder="Category"
-                name="category"
-              />
-              <ErrorMessage name="category" component="div" />
-              <Field
-                className="p-2 border-b focus:outline-none border-b-blue-400"
-                required
-                type="number"
-                placeholder="price"
-                name="price"
-              />
-              <ErrorMessage name="price" component="div" />
-              <Dialog.Close>
-                <Button mt="3" type="submit" disabled={isSubmitting}>
-                  <Text className="cursor-pointer w-full">
-                    {isSubmitting ? "Adding..." : "Add Product"}
-                  </Text>
-                </Button>
-              </Dialog.Close>
-            </Form>
-          )}
-        </Formik>
-      </Dialog.Content>
-    </Dialog.Root>
+      }
+      title="Add New Product"
+      initialValues={{
+        title: "",
+        category: "",
+        price: "",
+      }}
+      onSubmit={onSubmit}
+      submitButtonText="Add Product"
+      isSubmittingText="Adding..."
+      validationSchema={validationSchema}
+    />
   );
 };
 

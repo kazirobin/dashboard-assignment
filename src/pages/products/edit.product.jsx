@@ -1,69 +1,57 @@
-import { Button, Dialog, Text } from "@radix-ui/themes";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import DynamicDialog from "../../components/common/dynamicDialog";
+import DynamicButton from "../../components/common/dynamicButton";
+import { number, object, string } from "yup";
 
 const EditProduct = ({ product, handleEditProduct }) => {
-  return (
-    <Dialog.Root>
-      <Dialog.Trigger>
-        <Button color="blue" style={{ cursor: "pointer" }}>
-          Edit
-        </Button>
-      </Dialog.Trigger>
+  const onSubmit = (values, { setSubmitting }) => {
+    handleEditProduct(product.id, values);
+    setSubmitting(false);
+  };
 
-      <Dialog.Content>
-        <Dialog.Title>Edit Product</Dialog.Title>
-        <Dialog.Description>
-          Update the product information below.
-        </Dialog.Description>
-        <Formik
-          initialValues={{
-            title: product?.title || "",
-            category: product?.category || "",
-            price: product?.price || "",
-          }}
-          onSubmit={(values, { setSubmitting }) => {
-            handleEditProduct(product.id, values);
-            setSubmitting(false);
-          }}
-        >
-          {({ isSubmitting }) => (
-            <Form className="flex flex-col gap-2">
-              <Field
-                className="p-2 border-b focus:outline-none border-b-blue-400"
-                required
-                type="text"
-                placeholder="Product title"
-                name="title"
-              />
-              <ErrorMessage name="title" component="div" />
-              <Field
-                className="p-2 border-b focus:outline-none border-b-blue-400"
-                required
-                type="text"
-                placeholder="Category"
-                name="category"
-              />
-              <ErrorMessage name="category" component="div" />
-              <Field
-                className="p-2 border-b focus:outline-none border-b-blue-400"
-                required
-                type="number"
-                placeholder="price"
-                name="price"
-              />
-              <ErrorMessage name="price" component="div" />
-              <Dialog.Close>
-                <Button mt="3" type="submit" disabled={isSubmitting}>
-                  <Text className="cursor-pointer w-full">
-                    {isSubmitting ? "Updating..." : "Update Product"}
-                  </Text>
-                </Button>
-              </Dialog.Close>
-            </Form>
-          )}
-        </Formik>
-      </Dialog.Content>
-    </Dialog.Root>
+  const fields = [
+    {
+      name: "title",
+      type: "text",
+      placeholder: "Product title",
+      required: true,
+    },
+    {
+      name: "category",
+      type: "text",
+      placeholder: "Category",
+      required: true,
+    },
+    {
+      name: "price",
+      type: "number",
+      placeholder: "Price",
+      required: true,
+    },
+  ];
+
+  const validationSchema = object({
+    title: string().required("Title is required"),
+    category: string().required("Category is required"),
+    price: number()
+      .required("Price is required")
+      .positive("Price must be positive"),
+  });
+
+  return (
+    <DynamicDialog
+      fields={fields}
+      trigger={<DynamicButton btnText="Edit" color="bg-blue-600" />}
+      title="Edit Product"
+      initialValues={{
+        title: product?.title || "",
+        category: product?.category || "",
+        price: product?.price || "",
+      }}
+      onSubmit={onSubmit}
+      submitButtonText="Update Product"
+      isSubmittingText="Updating..."
+      validationSchema={validationSchema}
+    />
   );
 };
 

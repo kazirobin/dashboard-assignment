@@ -44,8 +44,8 @@ const NavbarComponent = ({ handleSidebar, sidebarActive }) => {
       </Flex>
 
       <Flex align="center" gap="5" className="cursor-pointer">
-        <Button variant="ghost" size="2" className="relative">
-          <Flex className="relative">
+        <Button variant="ghost" size="2" className="relative" >
+          <Flex className="relative cursor-pointer" >
             <PiBellSimpleFill className="text-blue-500 text-3xl" />
             <Badge
               variant="solid"

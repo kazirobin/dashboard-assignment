@@ -1,19 +1,13 @@
 import { Button, Flex } from "@radix-ui/themes";
 import EditProduct from "./../pages/products/edit.product";
+import DynamicButton from "./../components/common/dynamicButton/dynamicButton.component";
 
-export const getColumns = (handleProductDelete,handleEditProduct) => [
+export const getColumns = (handleProductDelete, handleEditProduct) => [
   {
     label: "Title",
     path: "title",
     content: (row, column) => <span>{row[column.path]}</span>,
   },
-  // {
-  //   label: "Images",
-  //   path: "images",
-  //   content: (row, column) => (
-  //     <img src={row[column.path][0]} alt="" srcset="" className="w-15" />
-  //   ),
-  // },
   {
     label: "Category",
     path: "category",
@@ -29,16 +23,15 @@ export const getColumns = (handleProductDelete,handleEditProduct) => [
     path: "action",
     content: (row, column) => (
       <Flex gap="3">
-      <Button color="tomato"
-        onClick={() => {
-          handleProductDelete(row)
-        }}
-        style={{cursor:"pointer"}}
-      >
-        Delete
-      </Button>
-     
-        <EditProduct product={row} handleEditProduct={handleEditProduct}/>
+        <DynamicButton
+          btnText="Delete"
+          color="bg-red-600"
+          onClick={() => {
+            handleProductDelete(row);
+          }}
+        />
+
+        <EditProduct product={row} handleEditProduct={handleEditProduct} />
       </Flex>
     ),
   },
