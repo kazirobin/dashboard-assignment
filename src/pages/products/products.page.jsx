@@ -78,6 +78,7 @@ const Products = () => {
         console.error("Product Loading Failed!! : ", error.message);
       });
   }, []);
+  
   console.log(products);
 
   return (
