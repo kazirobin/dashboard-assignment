@@ -1,4 +1,4 @@
-import {  Dialog } from "@radix-ui/themes";
+import { Dialog } from "@radix-ui/themes";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import DynamicButton from "../dynamicButton";
 
@@ -16,8 +16,11 @@ const DynamicDialog = ({
     <Dialog.Root>
       <Dialog.Trigger>{trigger}</Dialog.Trigger>
 
-      <Dialog.Content size="1">
+      <Dialog.Content size="1" aria-describedby="dialog-description">
         <Dialog.Title>{title}</Dialog.Title>
+        <Dialog.Description className="sr-only">
+          {title} form dialog
+        </Dialog.Description>
         <Formik
           initialValues={initialValues}
           onSubmit={onSubmit}
@@ -33,9 +36,12 @@ const DynamicDialog = ({
                     type={field.type}
                     placeholder={field.placeholder}
                     name={field.name}
-                  
                   />
-                  <ErrorMessage className="text-red-700 px-2" name={field.name} component="div" />
+                  <ErrorMessage
+                    className="text-red-700 px-2"
+                    name={field.name}
+                    component="div"
+                  />
                 </div>
               ))}
               <Dialog.Close>

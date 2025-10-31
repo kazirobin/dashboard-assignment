@@ -211,3 +211,6 @@ This project is open-source under the [MIT License](LICENSE).
 
 - formik for form and required validity 🆗
 - update/edit product🆗
+
+- one
+- 

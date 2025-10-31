@@ -1,54 +1,55 @@
-import DynamicDialog from "../../components/common/dynamicDialog";
-import DynamicButton from "../../components/common/dynamicButton";
-import { number, object, string } from "yup";
+import axios from "axios";
+import DynamicDialog from "../dynamicDialog";
+import DynamicButton from "../dynamicButton";
 
-const EditData = ({ data, handleEditProduct }) => {
-  const onSubmit = (values, { setSubmitting }) => {
-    handleEditProduct(data.id, values);
-    setSubmitting(false);
+const EditData = ({
+  item,
+  setItems,
+  formFields,
+  validationSchema,
+  baseApi,
+  title,
+}) => {
+  const handleEditData = (itemId, updatedValues) => {
+    console.log("editing calling")
+    try {
+      axios.put(`${baseApi}/${itemId}`, updatedValues);
+      setItems((prevItems) =>
+        prevItems.map((item) =>
+          item.id === itemId
+            ? {
+                ...item,
+                ...updatedValues,
+              }
+            : item
+        )
+      );
+      console.log(`${title} updated successfully:`, updatedValues);
+    } catch (error) {
+      console.error(`Failed to updated ${title}:`, error);
+      alert(`Failed to updated ${title} please try again`);
+    }
   };
 
-  const fields = [
-    {
-      name: "title",
-      type: "text",
-      placeholder: "Product title",
-      required: true,
-    },
-    {
-      name: "category",
-      type: "text",
-      placeholder: "Category",
-      required: true,
-    },
-    {
-      name: "price",
-      type: "number",
-      placeholder: "Price",
-      required: true,
-    },
-  ];
-
-  const validationSchema = object({
-    title: string().required("Title is required"),
-    category: string().required("Category is required"),
-    price: number()
-      .required("Price is required")
-      .positive("Price must be positive"),
-  });
-
+  const onSubmit = (values, { setSubmitting }) => {
+    handleEditData(item.id, values);
+    setSubmitting(false);
+  };
+  const buildInitialValues = () => {
+    const initialValues = {};
+    formFields.forEach((field) => {
+      initialValues[field.name] = item?.[field.name] || "";
+    });
+    return initialValues;
+  };
   return (
     <DynamicDialog
-      fields={fields}
+      fields={formFields}
       trigger={<DynamicButton btnText="Edit" color="bg-blue-600" />}
-      title="Edit Product"
-      initialValues={{
-        title: data?.title || "",
-        category: data?.category || "",
-        price: data?.price || "",
-      }}
+      title={`Edit ${title}`}
+      initialValues={buildInitialValues()}
       onSubmit={onSubmit}
-      submitButtonText="Update Product"
+      submitButtonText={`Update ${title}`}
       isSubmittingText="Updating..."
       validationSchema={validationSchema}
     />

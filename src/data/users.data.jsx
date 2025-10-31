@@ -3,20 +3,20 @@ import DynamicButton from "./../components/common/dynamicButton/dynamicButton.co
 import { number, object, string } from "yup";
 import EditData from "../components/common/editData";
 
-export const getColumns = (handleDelete, setProducts) => [
+export const getColumns = (handleDelete, setUsers) => [
   {
-    label: "Title",
-    path: "title",
+    label: "Name",
+    path: "firstName",
     content: (row, column) => <span>{row[column.path]}</span>,
   },
   {
-    label: "Category",
-    path: "category",
+    label: "Email",
+    path: "email",
     content: (row, column) => <span>{row[column.path]}</span>,
   },
   {
-    label: "Price",
-    path: "price",
+    label: "Role",
+    path: "role",
     content: (row, column) => <span>{row[column.path]}</span>,
   },
   {
@@ -34,46 +34,44 @@ export const getColumns = (handleDelete, setProducts) => [
 
         <EditData
           item={row}
-          setItems={setProducts}
+          setItems={setUsers}
           formFields={formFields}
           validationSchema={validation}
           baseApi={baseApi}
-          title="Product"
+          title="User"
         />
       </Flex>
     ),
   },
 ];
-export const baseApi = "https://dummyjson.com/products";
+export const baseApi = "https://dummyjson.com/users";
 export const formFields = [
   {
-    name: "title",
+    name: "firstName",
     type: "text",
-    placeholder: "Product Title..",
+    placeholder: "User Name..",
     required: true,
   },
   {
-    name: "category",
+    name: "email",
     type: "text",
-    placeholder: "Category Title..",
+    placeholder: "User Email..",
     required: true,
   },
   {
-    name: "price",
-    type: "number",
-    placeholder: "Price Title..",
+    name: "role",
+    type: "text",
+    placeholder: "User Role..",
     required: true,
   },
 ];
 export const validation = object({
-  title: string().required("Title is required"),
-  category: string().required("Category is required"),
-  price: number()
-    .required("Price is required")
-    .positive("Price must be positive"),
+  firstName: string().required("Name is required"),
+  email: string().email("Invalid email").required("Email is required"),
+  role: string().required("Role is required"),
 });
 export const initial = {
-  title: "",
-  category: "",
-  price: "",
+  name: "",
+  email: "",
+  role: "",
 };
