@@ -16,24 +16,23 @@ It’s designed for easy scalability and maintainability — perfect for managin
 ```
 src/
 ├── components/
-│   ├── layouts/
-│   ├── pages/
-│   │   ├── home/
-│   │   ├── products/
-│   │   │   ├── add.product.jsx  
-│   │   │   ├── edit.product.jsx  
-│   │   │   ├── products.page.jsx  
-│   │   ├── users/
-│   ├── shared/
-│   │   ├── dynamicButton/
-│   │   ├── icon/
-│   │   ├── navbar/
-│   │   ├── sidebar/
-│   │   ├── table/
+│   ├──  common/
+│   │    ├── addData/
+│   │    ├── dynamicButton/
+│   │    ├── dynamicDialog/
+│   │    ├── navbar/
+│   │    ├── sidebar/
+│   │    └── table/
+│   └──  layouts/
 │
 ├── data/
 │   ├── products.data.jsx
 │   ├── sidebar.data.jsx
+├── pages/
+│   │   ├── home/
+│   │   ├── products/
+│   │   │   ├── products.page.jsx  
+│   │   ├── users/
 │
 ├── router/
 │   ├── routes.jsx
@@ -189,11 +188,6 @@ export const router = createBrowserRouter([
 * Keep all UI updates synced with the **Figma design**.
 * Reuse shared components wherever possible.
 
----
-
-## 📜 License
-
-This project is open-source under the [MIT License](LICENSE).
 
 ---
 
@@ -203,14 +197,13 @@ This project is open-source under the [MIT License](LICENSE).
  **badges (like React, Formik, Vite, etc.)** 
  for a more professional GitHub look?
 
-- dynamic button
 - ui same as figma
 - pagination 
 - table column width problem fix 
 
 
+- dynamic button 🆗
 - formik for form and required validity 🆗
 - update/edit product🆗
-
-- one
-- 
+- data is up to date 🆗
+- page is up to date 🆗

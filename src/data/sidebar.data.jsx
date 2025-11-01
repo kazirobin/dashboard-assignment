@@ -1,8 +1,8 @@
 import { Flex } from "@radix-ui/themes";
 import { FaBoxesPacking, FaUserLarge } from "react-icons/fa6";
 import { NavLink } from "react-router";
-import Icon from "../components/common/dynamicIcon/dynamicIcon.component";
 import { AiFillProduct } from "react-icons/ai";
+import { GiHamburger } from "react-icons/gi";
 const NavItem = ({ column, sidebarActive }) => (
   <NavLink
     to={column.path}
@@ -39,6 +39,15 @@ export const getColumns = ({ sidebarActive }) => [
     label: "Users",
     icon: <FaUserLarge />,
     path: "users",
+    content: (column) => {
+      return <NavItem column={column} sidebarActive={sidebarActive} />;
+    },
+  },
+  {
+    id: 3,
+    label: "Recipes",
+    icon: <GiHamburger />,
+    path: "recipes",
     content: (column) => {
       return <NavItem column={column} sidebarActive={sidebarActive} />;
     },
