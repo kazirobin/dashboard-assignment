@@ -8,34 +8,34 @@ import {
   getColumns,
   initial,
   validation,
-} from "./../../data/users.data";
+} from "./../../data/recipes.data";
 import AddData from "../../components/common/addData";
 
 const Recipes = () => {
-  const [users, setUsers] = useState([]);
-  const [newUser, setNewUser] = useState(initial);
+  const [recipes, setRecipes] = useState([]);
+  const [newRecipe, setNewRecipe] = useState(initial);
 
-  const handleDelete = async (user) => {
-    axios.delete(`https://dummyjson.com/users/${user.id}`);
-    setUsers((prevUsers) =>
-      prevUsers.filter((item) => item.id !== user.id)
+  const handleDelete = async (recipe) => {
+    axios.delete(`https://dummyjson.com/recipes/${recipe.id}`);
+    setRecipes((prevRecipes) =>
+      prevRecipes.filter((item) => item.id !== recipe.id)
     );
   };
 
-  const columns = getColumns(handleDelete, setUsers);
+  const columns = getColumns(handleDelete, setRecipes);
   useEffect(() => {
     const promise = axios.get(baseApi);
     promise
       .then((res) => {
-        setUsers(res.data.users);
-        console.log(users);
+        setRecipes(res.data.recipes);
+        console.log(recipes);
       })
       .catch((error) => {
-        console.error("Users Loading Failed!! : ", error.message);
+        console.error("recipes Loading Failed!! : ", error.message);
       });
   }, []);
 
-  console.log(users);
+  console.log(recipes);
 
   return (
     <div className="w-full overflow-hidden">
@@ -47,19 +47,19 @@ const Recipes = () => {
         px="9"
         py="3"
       >
-        <Text className="">Total users: {users.length}</Text>
+        <Text className="">Total recipes: {recipes.length}</Text>
         <AddData
-          setDataSet={setUsers}
-          setNewData={setNewUser}
+          setDataSet={setRecipes}
+          setNewData={setNewRecipe}
           formFields={formFields}
           validationSchema={validation}
           initialValues={initial}
           baseApi={baseApi}
-          addBtnText="Add User"
+          addBtnText="Add recipe"
         />
       </Flex>
 
-      <TableComponent rows={users} columns={columns}></TableComponent>
+      <TableComponent rows={recipes} columns={columns}></TableComponent>
     </div>
   );
 };
