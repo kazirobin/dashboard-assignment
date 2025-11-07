@@ -1,6 +1,7 @@
 import axios from "axios";
 import DynamicDialog from "../dynamicDialog";
 import DynamicButton from "../dynamicButton";
+import { toast } from "react-toastify";
 
 const EditData = ({
   item,
@@ -34,6 +35,7 @@ const EditData = ({
   const onSubmit = (values, { setSubmitting }) => {
     handleEditData(item.id, values);
     setSubmitting(false);
+    toast.success(`${title} is updated successfully..`)
   };
   const buildInitialValues = () => {
     const initialValues = {};

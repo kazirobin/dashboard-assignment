@@ -2,6 +2,7 @@ import { BiPlus } from "react-icons/bi";
 import axios from "axios";
 import DynamicDialog from "../dynamicDialog";
 import DynamicButton from "../dynamicButton";
+import { toast } from "react-toastify";
 
 const AddData = ({
   setDataSet,
@@ -31,6 +32,7 @@ const AddData = ({
   const onSubmit = (values, { setSubmitting }) => {
     handleNewData(values);
     setSubmitting(false);
+    toast.success(`${addBtnText} successful...`)
   };
   const titles = addBtnText.split(" ");
   return (

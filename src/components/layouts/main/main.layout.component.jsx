@@ -3,6 +3,7 @@ import { Outlet } from "react-router";
 import NavbarComponent from "../../common/navbar";
 import { Theme } from "@radix-ui/themes";
 import { useState } from "react";
+import {  ToastContainer } from "react-toastify";
 
 function MainLayout() {
   const [sidebarActive, setSidebarActive] = useState(true);
@@ -32,6 +33,7 @@ function MainLayout() {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </Theme>
   );
 }

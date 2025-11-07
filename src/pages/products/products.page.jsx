@@ -10,6 +10,7 @@ import {
   validation,
 } from "./../../data/products.data";
 import AddData from "../../components/common/addData";
+import { toast } from "react-toastify";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -20,6 +21,7 @@ const Products = () => {
     setProducts((prevProducts) =>
       prevProducts.filter((item) => item.id !== product.id)
     );
+    toast.warn("Deleted")
   };
 
   const columns = getColumns(handleDelete, setProducts);
