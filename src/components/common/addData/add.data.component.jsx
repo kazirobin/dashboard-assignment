@@ -29,18 +29,29 @@ const AddData = ({
     }
     console.log(values);
   };
-  const onSubmit = (values, { setSubmitting }) => {
-    handleNewData(values);
+ const onSubmit = (values, { setSubmitting }) => {
+  const hasAnyData = formFields.some((field) => {
+    const value = values[field.name];
+    return value !== "" && value !== null && value !== undefined;
+  });
+
+  if (!hasAnyData) {
+    toast.info(`Please fill in at least one field for ${addBtnText}`);
     setSubmitting(false);
-    toast.success(`${addBtnText} successful...`)
-  };
+    return;
+  }
+
+  handleNewData(values);
+  setSubmitting(false);
+  toast.success(`${addBtnText} successful...`);
+};
   const titles = addBtnText.split(" ");
   return (
     <DynamicDialog
       fields={formFields}
       trigger={
         <DynamicButton
-          color="bg-blue-600"
+          styles="bg-blue-600"
           icon={<BiPlus />}
           btnText={addBtnText}
         />

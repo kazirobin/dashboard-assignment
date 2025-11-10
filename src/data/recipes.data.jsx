@@ -26,7 +26,7 @@ export const getColumns = (handleDelete, setRecipes) => [
       <Flex gap="3">
         <DynamicButton
           btnText="Delete"
-          color="bg-red-600"
+          styles="bg-red-600"
           onClick={() => {
             handleDelete(row);
           }}
@@ -48,18 +48,21 @@ export const baseApi = "https://dummyjson.com/recipes";
 export const formFields = [
   {
     name: "name",
+    label:"Name :",
     type: "text",
     placeholder: "Recipe Name..",
     required: true,
   },
   {
     name: "cuisine",
+    label:"Cuisine :",
     type: "text",
     placeholder: "Recipe cuisine or type ..",
     required: true,
   },
   {
     name: "difficulty",
+    label:"Difficulty :",
     type: "text",
     placeholder: "Recipe difficulty..",
     required: true,

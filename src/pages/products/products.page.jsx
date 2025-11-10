@@ -21,7 +21,7 @@ const Products = () => {
     setProducts((prevProducts) =>
       prevProducts.filter((item) => item.id !== product.id)
     );
-    toast.warn("Deleted")
+    toast.warn("Deleted");
   };
 
   const columns = getColumns(handleDelete, setProducts);

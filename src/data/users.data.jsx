@@ -1,6 +1,6 @@
 import { Flex } from "@radix-ui/themes";
 import DynamicButton from "./../components/common/dynamicButton/dynamicButton.component";
-import { number, object, string } from "yup";
+import { object, string } from "yup";
 import EditData from "../components/common/editData";
 
 export const getColumns = (handleDelete, setUsers) => [
@@ -26,7 +26,7 @@ export const getColumns = (handleDelete, setUsers) => [
       <Flex gap="3">
         <DynamicButton
           btnText="Delete"
-          color="bg-red-600"
+          styles="bg-red-600"
           onClick={() => {
             handleDelete(row);
           }}
@@ -48,18 +48,21 @@ export const baseApi = "https://dummyjson.com/users";
 export const formFields = [
   {
     name: "firstName",
+    label:"First Name :",
     type: "text",
     placeholder: "User Name..",
     required: true,
   },
   {
     name: "email",
+    label:"Email :",
     type: "text",
     placeholder: "User Email..",
     required: true,
   },
   {
     name: "role",
+    label:"Role :",
     type: "text",
     placeholder: "User Role..",
     required: true,

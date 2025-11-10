@@ -12,7 +12,7 @@ const EditData = ({
   title,
 }) => {
   const handleEditData = (itemId, updatedValues) => {
-    console.log("editing calling")
+    console.log("editing calling");
     try {
       axios.put(`${baseApi}/${itemId}`, updatedValues);
       setItems((prevItems) =>
@@ -33,9 +33,18 @@ const EditData = ({
   };
 
   const onSubmit = (values, { setSubmitting }) => {
+    const isSameValues = formFields.every((field) => {
+      return item[field.name] === values[field.name];
+    });
+
+    if (isSameValues) {
+      toast.info(`No changes detected in ${title}`);
+      setSubmitting(false);
+      return;
+    }
     handleEditData(item.id, values);
     setSubmitting(false);
-    toast.success(`${title} is updated successfully..`)
+    toast.success(`${title} is updated successfully..`);
   };
   const buildInitialValues = () => {
     const initialValues = {};
@@ -47,7 +56,7 @@ const EditData = ({
   return (
     <DynamicDialog
       fields={formFields}
-      trigger={<DynamicButton btnText="Edit" color="bg-blue-600" />}
+      trigger={<DynamicButton btnText="Edit" styles="bg-blue-600" />}
       title={`Edit ${title}`}
       initialValues={buildInitialValues()}
       onSubmit={onSubmit}

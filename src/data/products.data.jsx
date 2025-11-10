@@ -26,7 +26,7 @@ export const getColumns = (handleDelete, setProducts) => [
       <Flex gap="3">
         <DynamicButton
           btnText="Delete"
-          color="bg-red-600"
+          styles="bg-red-600"
           onClick={() => {
             handleDelete(row);
           }}
@@ -48,18 +48,21 @@ export const baseApi = "https://dummyjson.com/products";
 export const formFields = [
   {
     name: "title",
+    label:"Title :",
     type: "text",
     placeholder: "Product Title..",
     required: true,
   },
   {
     name: "category",
+    label:"Category :",
     type: "text",
     placeholder: "Category Title..",
     required: true,
   },
   {
     name: "price",
+    label:"Price :",
     type: "number",
     placeholder: "Price Title..",
     required: true,

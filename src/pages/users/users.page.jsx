@@ -10,6 +10,7 @@ import {
   validation,
 } from "./../../data/users.data";
 import AddData from "../../components/common/addData";
+import { toast } from "react-toastify";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -17,9 +18,8 @@ const Users = () => {
 
   const handleDelete = async (user) => {
     axios.delete(`https://dummyjson.com/users/${user.id}`);
-    setUsers((prevUsers) =>
-      prevUsers.filter((item) => item.id !== user.id)
-    );
+    setUsers((prevUsers) => prevUsers.filter((item) => item.id !== user.id));
+    toast.warn("Deleted");
   };
 
   const columns = getColumns(handleDelete, setUsers);

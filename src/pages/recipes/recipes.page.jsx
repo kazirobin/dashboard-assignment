@@ -10,6 +10,7 @@ import {
   validation,
 } from "./../../data/recipes.data";
 import AddData from "../../components/common/addData";
+import { toast } from "react-toastify";
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -20,6 +21,7 @@ const Recipes = () => {
     setRecipes((prevRecipes) =>
       prevRecipes.filter((item) => item.id !== recipe.id)
     );
+    toast.warn("Deleted");
   };
 
   const columns = getColumns(handleDelete, setRecipes);

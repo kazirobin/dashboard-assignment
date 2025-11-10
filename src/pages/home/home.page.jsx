@@ -9,7 +9,7 @@ const Home = () => {
       <Text>
         hello <Icon src="/assets/menu.svg" />
       </Text>
-      <DynamicButton color="bg-red-200" btnText="hello" />
+      <DynamicButton styles="bg-red-200" btnText="hello" />
     </div>
   );
 };
