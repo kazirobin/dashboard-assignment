@@ -51,12 +51,12 @@ const AddData = ({
       fields={formFields}
       trigger={
         <DynamicButton
-          styles="bg-blue-600"
+          styles="bg-blue-600 text-white capitalize"
           icon={<BiPlus />}
           btnText={addBtnText}
         />
       }
-      title={`${titles[0]} New ${titles[1]}`}
+      title={<div className="capitalize">{`${titles[0]} New ${titles[1]}`}</div>}
       initialValues={initialValues}
       onSubmit={onSubmit}
       submitButtonText={addBtnText}

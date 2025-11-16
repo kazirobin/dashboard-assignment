@@ -11,33 +11,20 @@ import {
 } from "./../../data/recipes.data";
 import AddData from "../../components/common/addData";
 import { toast } from "react-toastify";
+import { useAllValues } from "../../hooks/useAllValues";
 
-const Recipes = () => {
-  const [recipes, setRecipes] = useState([]);
+const values = () => {
   const [newRecipe, setNewRecipe] = useState(initial);
 
-  const handleDelete = async (recipe) => {
-    axios.delete(`https://dummyjson.com/recipes/${recipe.id}`);
-    setRecipes((prevRecipes) =>
-      prevRecipes.filter((item) => item.id !== recipe.id)
-    );
-    toast.warn("Deleted");
-  };
+  const { loading, handleDelete, values, setValues, handleGetValues } =
+    useAllValues();
 
-  const columns = getColumns(handleDelete, setRecipes);
-  useEffect(() => {
-    const promise = axios.get(baseApi);
-    promise
-      .then((res) => {
-        setRecipes(res.data.recipes);
-        console.log(recipes);
-      })
-      .catch((error) => {
-        console.error("recipes Loading Failed!! : ", error.message);
-      });
-  }, []);
+    useEffect(() => {
+      handleGetValues("recipes");
+    }, []);
+  const columns = getColumns(handleDelete, setValues);
 
-  console.log(recipes);
+  console.log(values);
 
   return (
     <div className="w-full overflow-hidden">
@@ -49,9 +36,9 @@ const Recipes = () => {
         px="9"
         py="3"
       >
-        <Text className="">Total recipes: {recipes.length}</Text>
+        <Text className="">Total values: {values.length}</Text>
         <AddData
-          setDataSet={setRecipes}
+          setDataSet={setValues}
           setNewData={setNewRecipe}
           formFields={formFields}
           validationSchema={validation}
@@ -61,9 +48,9 @@ const Recipes = () => {
         />
       </Flex>
 
-      <TableComponent rows={recipes} columns={columns}></TableComponent>
+      <TableComponent rows={values} columns={columns}></TableComponent>
     </div>
   );
 };
 
-export default Recipes;
+export default values;

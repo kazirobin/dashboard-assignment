@@ -10,33 +10,29 @@ import {
   validation,
 } from "./../../data/users.data";
 import AddData from "../../components/common/addData";
-import { toast } from "react-toastify";
+import { useAllValues } from "../../hooks/useAllValues";
+import { ScaleLoader } from "react-spinners";
 
-const Users = () => {
-  const [users, setUsers] = useState([]);
+const values = () => {
   const [newUser, setNewUser] = useState(initial);
 
-  const handleDelete = async (user) => {
-    axios.delete(`https://dummyjson.com/users/${user.id}`);
-    setUsers((prevUsers) => prevUsers.filter((item) => item.id !== user.id));
-    toast.warn("Deleted");
-  };
+  const { loading, handleDelete, values, setValues, handleGetValues } =
+    useAllValues();
 
-  const columns = getColumns(handleDelete, setUsers);
   useEffect(() => {
-    const promise = axios.get(baseApi);
-    promise
-      .then((res) => {
-        setUsers(res.data.users);
-        console.log(users);
-      })
-      .catch((error) => {
-        console.error("Users Loading Failed!! : ", error.message);
-      });
+    handleGetValues("users");
   }, []);
 
-  console.log(users);
+  const columns = getColumns(handleDelete, setValues);
 
+  console.log(values);
+  if (loading) {
+    return (
+      <div className="text-center">
+        <ScaleLoader />
+      </div>
+    );
+  }
   return (
     <div className="w-full overflow-hidden">
       <Flex
@@ -47,9 +43,9 @@ const Users = () => {
         px="9"
         py="3"
       >
-        <Text className="">Total users: {users.length}</Text>
+        <Text className="">Total values: {values.length}</Text>
         <AddData
-          setDataSet={setUsers}
+          setDataSet={setValues}
           setNewData={setNewUser}
           formFields={formFields}
           validationSchema={validation}
@@ -59,9 +55,9 @@ const Users = () => {
         />
       </Flex>
 
-      <TableComponent rows={users} columns={columns}></TableComponent>
+      <TableComponent rows={values} columns={columns}></TableComponent>
     </div>
   );
 };
 
-export default Users;
+export default values;

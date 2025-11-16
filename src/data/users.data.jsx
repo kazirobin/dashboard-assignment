@@ -2,8 +2,12 @@ import { Flex } from "@radix-ui/themes";
 import DynamicButton from "./../components/common/dynamicButton/dynamicButton.component";
 import { object, string } from "yup";
 import EditData from "../components/common/editData";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
-export const getColumns = (handleDelete, setUsers) => [
+
+export const endPoint = "users"
+export const baseApi = `${import.meta.env.VITE_BASE_URL}/${endPoint}`;
+export const getColumns = (handleDelete, setValues) => [
   {
     label: "Name",
     path: "firstName",
@@ -23,28 +27,28 @@ export const getColumns = (handleDelete, setUsers) => [
     label: "Action",
     path: "action",
     content: (row, column) => (
-      <Flex gap="3">
-        <DynamicButton
-          btnText="Delete"
-          styles="bg-red-600"
-          onClick={() => {
-            handleDelete(row);
-          }}
-        />
-
-        <EditData
+      <Flex className="border bg-[#D5D5D5] rounded-lg border-[#979797] overflow-hidden">
+         <EditData
           item={row}
-          setItems={setUsers}
+          setItems={setValues}
           formFields={formFields}
           validationSchema={validation}
           baseApi={baseApi}
-          title="User"
+          title={endPoint}
         />
+        <DynamicButton
+          icon={<RiDeleteBin6Line />}
+          styles="bg-[#D5D5D5] text-[#EF3826] border-l border-l-[#979797] rounded-none"
+          onClick={() => {
+            handleDelete(row, setValues, endPoint);
+          }}
+        />
+
+       
       </Flex>
     ),
   },
 ];
-export const baseApi = "https://dummyjson.com/users";
 export const formFields = [
   {
     name: "firstName",

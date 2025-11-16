@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import TableComponent from "../../components/common/table";
 import { Flex, Text } from "@radix-ui/themes";
@@ -10,35 +9,29 @@ import {
   validation,
 } from "./../../data/products.data";
 import AddData from "../../components/common/addData";
-import { toast } from "react-toastify";
+import { useAllValues } from "../../hooks/useAllValues";
+import { ScaleLoader } from "react-spinners";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
   const [newProduct, setNewProduct] = useState(initial);
 
-  const handleDelete = async (product) => {
-    axios.delete(`https://dummyjson.com/products/${product.id}`);
-    setProducts((prevProducts) =>
-      prevProducts.filter((item) => item.id !== product.id)
-    );
-    toast.warn("Deleted");
-  };
+  const { loading, handleDelete, values, setValues, handleGetValues } =
+    useAllValues();
 
-  const columns = getColumns(handleDelete, setProducts);
   useEffect(() => {
-    const promise = axios.get(baseApi);
-    promise
-      .then((res) => {
-        setProducts(res.data.products);
-        console.log(products);
-      })
-      .catch((error) => {
-        console.error("Product Loading Failed!! : ", error.message);
-      });
+    handleGetValues("products");
   }, []);
 
-  console.log(products);
+  const columns = getColumns(handleDelete, setValues);
 
+  console.log(values);
+  if (loading) {
+    return (
+      <div className="text-center">
+        <ScaleLoader />
+      </div>
+    );
+  }
   return (
     <div className="w-full overflow-hidden">
       <Flex
@@ -49,9 +42,9 @@ const Products = () => {
         px="9"
         py="3"
       >
-        <Text className="">Total product: {products.length}</Text>
+        <Text className="">Total product: {values.length}</Text>
         <AddData
-          setDataSet={setProducts}
+          setDataSet={setValues}
           setNewData={setNewProduct}
           formFields={formFields}
           validationSchema={validation}
@@ -61,7 +54,7 @@ const Products = () => {
         />
       </Flex>
 
-      <TableComponent rows={products} columns={columns}></TableComponent>
+      <TableComponent rows={values} columns={columns}></TableComponent>
     </div>
   );
 };

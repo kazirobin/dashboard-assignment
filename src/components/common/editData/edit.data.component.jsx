@@ -2,6 +2,7 @@ import axios from "axios";
 import DynamicDialog from "../dynamicDialog";
 import DynamicButton from "../dynamicButton";
 import { toast } from "react-toastify";
+import { LiaEditSolid } from "react-icons/lia";
 
 const EditData = ({
   item,
@@ -56,8 +57,8 @@ const EditData = ({
   return (
     <DynamicDialog
       fields={formFields}
-      trigger={<DynamicButton btnText="Edit" styles="bg-blue-600" />}
-      title={`Edit ${title}`}
+      trigger={<DynamicButton  icon={<LiaEditSolid/>} styles="bg-[#D5D5D5] text-black" />}
+      title={<div className="capitalize">{`Edit ${title}`}</div>}
       initialValues={buildInitialValues()}
       onSubmit={onSubmit}
       submitButtonText={`Update ${title}`}
