@@ -15,36 +15,45 @@ const AddData = ({
 }) => {
   const handleNewData = async (values) => {
     try {
-      const response = await axios.post(`${baseApi}/add`, values);
+      // For dummyjson, we can't actually add to the API, so generate a local ID
       const newDataWithId = {
-        ...response.data,
-        id: Date.now(),
+        ...values,
+        id: Date.now(), // Generate a unique local ID
       };
+      
+      // If you want to simulate API call (will fail with dummyjson)
+      try {
+        await axios.post(`${baseApi}/add`, values);
+      } catch (apiError) {
+        console.log("API add failed (expected for dummyjson), using local state only");
+      }
+      
       setDataSet((prev) => [newDataWithId, ...prev]);
       setNewData(initialValues);
-      console.log("Data added successfully:", response.data);
+      console.log("Data added successfully (local):", newDataWithId);
     } catch (error) {
       console.error("Failed to add new data:", error);
-      alert("Failed to add new data. Please try again.");
+      toast.error("Failed to add new data. Please try again.");
     }
-    console.log(values);
   };
- const onSubmit = (values, { setSubmitting }) => {
-  const hasAnyData = formFields.some((field) => {
-    const value = values[field.name];
-    return value !== "" && value !== null && value !== undefined;
-  });
 
-  if (!hasAnyData) {
-    toast.info(`Please fill in at least one field for ${addBtnText}`);
+  const onSubmit = (values, { setSubmitting }) => {
+    const hasAnyData = formFields.some((field) => {
+      const value = values[field.name];
+      return value !== "" && value !== null && value !== undefined;
+    });
+
+    if (!hasAnyData) {
+      toast.info(`Please fill in at least one field for ${addBtnText}`);
+      setSubmitting(false);
+      return;
+    }
+
+    handleNewData(values);
     setSubmitting(false);
-    return;
-  }
+    toast.success(`${addBtnText} successful...`);
+  };
 
-  handleNewData(values);
-  setSubmitting(false);
-  toast.success(`${addBtnText} successful...`);
-};
   const titles = addBtnText.split(" ");
   return (
     <DynamicDialog
@@ -56,7 +65,7 @@ const AddData = ({
           btnText={addBtnText}
         />
       }
-      title={<div className="capitalize">{`${titles[0]} New ${titles[1]}`}</div>}
+      title={`${titles[0]} New ${titles[1]}`}
       initialValues={initialValues}
       onSubmit={onSubmit}
       submitButtonText={addBtnText}

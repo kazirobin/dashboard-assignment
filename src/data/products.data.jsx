@@ -39,7 +39,7 @@ export const getColumns = (handleDelete, setValues) => [
           icon={<RiDeleteBin6Line />}
           styles="bg-[#D5D5D5] text-[#EF3826] border-l border-l-[#979797] rounded-none"
           onClick={() => {
-            handleDelete(row, setValues, endPoint);
+            handleDelete(row,  endPoint);
           }}
         />
       </Flex>

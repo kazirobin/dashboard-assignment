@@ -12,27 +12,35 @@ export const useAllValues = () => {
       const response = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/${endPoint}`
       );
-      setValues(response.data[endPoint]);
+      setValues(response.data[endPoint] || response.data);
       setLoading(false);
     } catch (error) {
       console.error(`${endPoint} Loading Failed!! : `, error.message);
       toast.error(error.message || "Something went wrong, try again later");
     }
   };
-  const handleDelete = async (values, setValues, endPoint) => {
+  const handleDelete = async (item, endPoint) => {
     try {
       setLoading(true);
-      await axios.delete(
-        `${import.meta.env.VITE_BASE_URL}/${endPoint}/${values.id}`
-      );
+      try {
+        await axios.delete(
+          `${import.meta.env.VITE_BASE_URL}/${endPoint}/${item.id}`
+        );
+      } catch (apiError) {
+        console.log(
+          "API delete failed (expected for dummy json), updating local state only"
+        );
+      }
+
       setValues((prevValues) =>
-        prevValues.filter((item) => item.id !== values.id)
-    );
-    toast.success(`Id no ${values.id} is deleted successfully`);
-    setLoading(false);
+        prevValues.filter((prevItem) => prevItem.id !== item.id)
+      );
+      toast.success(`Item deleted successfully`);
     } catch (error) {
       console.error(error);
       toast.error("Something Went Wrong, Try Again Later");
+    } finally {
+      setLoading(false);
     }
   };
   return {

@@ -27,7 +27,8 @@ const DynamicDialog = ({
 
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
-      <Dialog.Trigger>{trigger}</Dialog.Trigger>
+      <Dialog.Trigger><div className="capitalize">{trigger}</div>
+      </Dialog.Trigger>
 
       <Dialog.Content size="1" aria-describedby="dialog-description">
         <Dialog.Close className="absolute top-2 right-2 cursor-pointer">
