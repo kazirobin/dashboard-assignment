@@ -10,10 +10,12 @@ import {
 } from "@radix-ui/themes";
 import { FaBars, FaMagnifyingGlass } from "react-icons/fa6";
 import { IoIosArrowDropdown } from "react-icons/io";
-import { PiBellSimpleFill } from "react-icons/pi";
 import { IoSettings } from "react-icons/io5";
 import { LuLogOut } from "react-icons/lu";
 import { CgProfile } from "react-icons/cg";
+import { GoBellFill } from "react-icons/go";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import DynamicIcon from "./../dynamicIcon/dynamicIcon.component";
 
 const NavbarComponent = ({ handleSidebar, sidebarActive }) => {
   return (
@@ -44,9 +46,9 @@ const NavbarComponent = ({ handleSidebar, sidebarActive }) => {
       </Flex>
 
       <Flex align="center" gap="5" className="cursor-pointer">
-        <Button variant="ghost" size="2" className="relative" >
-          <Flex className="relative cursor-pointer" >
-            <PiBellSimpleFill className="text-blue-500 text-3xl" />
+        <Button variant="ghost" size="2" className="relative">
+          <Flex className="relative cursor-pointer">
+            <GoBellFill className="text-blue-500 text-3xl" />
             <Badge
               variant="solid"
               color="red"
@@ -75,18 +77,13 @@ const NavbarComponent = ({ handleSidebar, sidebarActive }) => {
         <DropdownMenu.Root>
           <DropdownMenu.Trigger>
             <Button variant="ghost">
-              <Flex gap="4" align="center" className="cursor-pointer">
-                <Avatar
-                  src="https://avatars.githubusercontent.com/u/110531952?v=4"
-                  fallback="KR"
-                  size="2"
-                  radius="full"
-                />
-                <Flex direction="column" align="start" pr="2">
-                  <Heading size="3">Kazi Robin</Heading>
-                  <Text>Admin</Text>
+              <Flex gap="3" align="center" className="cursor-pointer">
+                <DynamicIcon src="/assets/Flag.png"  styles="text-[#646464]" />
+                
+                <Flex direction="column" align="start">
+                  <Heading size="3" className="text-[#646464]">English</Heading>
                 </Flex>
-                <IoIosArrowDropdown className="text-2xl" />
+                <MdKeyboardArrowDown className="text-[#646464] text-2xl" />
               </Flex>
             </Button>
           </DropdownMenu.Trigger>
@@ -96,7 +93,46 @@ const NavbarComponent = ({ handleSidebar, sidebarActive }) => {
             gap="2"
           >
             <Flex direction="column" gap="1">
+              <DropdownMenu.Item>
+                <Flex
+                  justify="center"
+                  align="center"
+                  gap="2"
+                  className="cursor-pointer w-full h-7 rounded-sm"
+                >
+                  <CgProfile /> <Text>Bangla</Text>
+                </Flex>
+              </DropdownMenu.Item>
 
+            
+            </Flex>
+          </DropdownMenu.Content>
+        </DropdownMenu.Root>
+
+        <DropdownMenu.Root>
+          <DropdownMenu.Trigger>
+            <Button variant="ghost">
+              <Flex gap="4" align="center" className="cursor-pointer">
+                <Avatar
+                  src="https://avatars.githubusercontent.com/u/110531952?v=4"
+                  fallback="KR"
+                  size="4"
+                  radius="full"
+                />
+                <Flex direction="column" align="start" pr="2">
+                  <Heading size="3" className="text-[#646464]">Kazi Robin</Heading>
+                  <Text  className="text-[#646464]">Admin</Text>
+                </Flex>
+                <IoIosArrowDropdown className="text-[#646464] text-2xl" />
+              </Flex>
+            </Button>
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Content
+            align="center"
+            style={{ width: "170px" }}
+            gap="2"
+          >
+            <Flex direction="column" gap="1">
               <DropdownMenu.Item>
                 <Flex
                   justify="center"
@@ -129,10 +165,7 @@ const NavbarComponent = ({ handleSidebar, sidebarActive }) => {
                   <LuLogOut /> <Text>Log Out</Text>
                 </Flex>
               </DropdownMenu.Item>
-
             </Flex>
-
-            
           </DropdownMenu.Content>
         </DropdownMenu.Root>
       </Flex>
