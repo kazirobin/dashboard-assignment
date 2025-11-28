@@ -17,6 +17,7 @@ export const getColumns = (handleDelete, setValues) => [
     path: "category",
     content: (row, column) => <span>{row[column.path]}</span>,
   },
+
   {
     label: "Price",
     path: "price",

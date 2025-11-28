@@ -74,7 +74,7 @@ export const formFields = [
 ];
 export const validation = object({
   name: string().required("Name is required"),
-  cuisine: string().required("Email is required"),
+  cuisine: string().required("Cuisine is required"),
   difficulty: string().required("Difficulty is required"),
 });
 export const initial = {
