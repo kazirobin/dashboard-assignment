@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import MenuIcon from "/assets/menu.svg";
-import { Button, Flex, Heading } from "@radix-ui/themes";
+import {  Flex  } from "@radix-ui/themes";
 import { getColumns } from "../../../data/sidebar.data";
 import { NavLink } from "react-router";
 import { FaBarsStaggered } from "react-icons/fa6";

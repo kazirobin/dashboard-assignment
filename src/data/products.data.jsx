@@ -1,7 +1,7 @@
 import { Flex } from "@radix-ui/themes";
 import DynamicButton from "./../components/common/dynamicButton/dynamicButton.component";
 import { number, object, string } from "yup";
-import EditData from "../components/common/editData";
+import EditData from "../feature/editData";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 export const endPoint = "products"

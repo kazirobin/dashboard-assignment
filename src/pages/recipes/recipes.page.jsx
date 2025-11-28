@@ -9,7 +9,7 @@ import {
   initial,
   validation,
 } from "./../../data/recipes.data";
-import AddData from "../../components/common/addData";
+import AddData from "../../feature/addData";
 import { toast } from "react-toastify";
 import { useAllValues } from "../../hooks/useAllValues";
 

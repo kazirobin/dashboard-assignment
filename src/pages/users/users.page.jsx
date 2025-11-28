@@ -9,7 +9,7 @@ import {
   initial,
   validation,
 } from "./../../data/users.data";
-import AddData from "../../components/common/addData";
+import AddData from "../../feature/addData";
 import { useAllValues } from "../../hooks/useAllValues";
 import { ScaleLoader } from "react-spinners";
 

@@ -1,7 +1,7 @@
 import { BiPlus } from "react-icons/bi";
 import axios from "axios";
-import DynamicDialog from "../dynamicDialog";
-import DynamicButton from "../dynamicButton";
+import DynamicDialog from "../../components/common/dynamicDialog";
+import DynamicButton from "../../components/common/dynamicButton";
 import { toast } from "react-toastify";
 
 const AddData = ({

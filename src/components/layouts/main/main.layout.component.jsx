@@ -28,7 +28,7 @@ function MainLayout() {
             />
           </div>
 
-          <div className="h-screen overflow-scroll pb-40">
+          <div className="h-screen overflow-scroll pb-40 bg-[#F5F6FA]">
             <Outlet />
           </div>
         </div>

@@ -5,6 +5,10 @@ import Products from "../pages/products";
 import Users from "../pages/users";
 import Recipes from "../pages/recipes";
 import ErrorPage from "../pages/error";
+import Favorites from "../pages/favorites";
+import Inbox from "../pages/inbox";
+import OrderLists from "../pages/order-lists";
+import ProductStock from "../pages/product-stock";
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +18,10 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "/products", element: <Products /> },
+      { path: "/favorites", element: <Favorites /> },
+      { path: "/inbox", element: <Inbox /> },
+      { path: "/order-lists", element: <OrderLists /> },
+      { path: "/product-stock", element: <ProductStock /> },
       { path: "/users", element: <Users /> },
       { path: "/recipes", element: <Recipes /> },
     ],

@@ -1,4 +1,3 @@
-import React from "react";
 import { Flex, Table } from '@radix-ui/themes';
 
 const TableBody = ({ rows, columns, children }) => {
