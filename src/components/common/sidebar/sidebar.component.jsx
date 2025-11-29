@@ -11,8 +11,8 @@ const Sidebar = ({ sidebarActive, handleSidebar }) => {
   }, [sidebarActive]);
   return (
     <div>
-      <Flex direction="column" className={`${!sidebarActive && "items-center"}`}>
-        <Flex align="center" className="cursor-pointer h-18 ps-1">
+      <>
+        <Flex align="center" className="cursor-pointer h-18 ps-6">
           {sidebarActive ? (
             <NavLink to="/">
               <DynamicIcon src="/assets/Logo.png" styles="ps-6" />
@@ -25,7 +25,7 @@ const Sidebar = ({ sidebarActive, handleSidebar }) => {
         {columns.map((column) => (
           <div key={column.id}>{column.content(column)}</div>
         ))}
-      </Flex>
+      </>
     </div>
   );
 };

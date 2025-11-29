@@ -1,48 +1,71 @@
 import { Flex } from "@radix-ui/themes";
-import {  FaRegHeart, FaUserLarge } from "react-icons/fa6";
+import { FaRegHeart, FaUserLarge } from "react-icons/fa6";
 import { NavLink } from "react-router";
 import { AiFillProduct } from "react-icons/ai";
 import { GiHamburger } from "react-icons/gi";
 import { RiDashboard3Line } from "react-icons/ri";
 import { PiChats, PiListChecksBold } from "react-icons/pi";
 import { LuRows3 } from "react-icons/lu";
-const NavItem = ({ column, sidebarActive,hr, title }) => (
-  <NavLink
-    to={column.path}
-    className={({ isActive }) =>
-      `block border-l-4 my-2 border-amber-50 relative text-xl ${
-        isActive
-          ? "text-amber-950   bg-gray-100 border-l-blue-600"
-          : "hover:border-l-gray-300 "
-      }`
-    }
-  >
-    {({ isActive }) => (
-      <Flex  direction="column" >
-        {hr && <div className="bg-[#797A7C] h-0.5 -ml-1 border-l-4 border-amber-50"></div>}
-        {title && <div className="border-l-4 border-amber-50 block py-4 -ml-1 ps-7 font-medium text-[#797A7C] uppercase  ">
-          
-          {title}
-          </div>}
-        
-          <Flex align="center" className={ `h-10 rounded-sm ms-4 ${isActive ? "bg-blue-600 text-white " :"hover:bg-gray-300 hover:text-blue-800"}`}>
-
-
-        {sidebarActive ? <div className="px-4">{column.icon}</div> :<div className={`p-4 rounded-4 bg-white ps-0 ${isActive && "text-blue-600" }`}>{column.icon}</div>}
-        {sidebarActive && <div className="pe-3">{column.label}</div>}
+const NavItem = ({ column, sidebarActive, hr, title }) => {
+  if (!column.path) {
+    return (
+      <div>
+        {hr && <div className="border-[#797A7C] mt-2 border w-full"></div>}
+        {sidebarActive ? (
+          <div className="border-l-4 border-amber-50 block pt-3 -ml-1 ps-7 font-medium text-[#797A7C] uppercase  ">
+            {title}
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
+    );
+  }
+  return (
+    <NavLink
+      to={column.path}
+      className={({ isActive }) =>
+        `block border-l-4 my-0.5 relative${
+          isActive
+            ? "text-amber-950   bg-gray-100 border-l-blue-600"
+            : " border-l-amber-50 hover:border-l-gray-300"
+        }`
+      }
+    >
+      {({ isActive }) => (
+        <Flex direction="column">
+          <Flex
+            align="center"
+            className={`h-10 rounded-sm ms-4 ${
+              isActive
+                ? "bg-blue-600 text-white "
+                : "hover:bg-gray-300 hover:text-blue-800"
+            }`}
+          >
+            {sidebarActive ? (
+              <div className="px-4 ">{column.icon}</div>
+            ) : (
+              <div
+                className={` rounded-4 bg-white pe-6 py-3  ${
+                  isActive && "text-blue-600"
+                }`}
+              >
+                {column.icon}
+              </div>
+            )}
+            {sidebarActive && <div className="pe-3">{column.label}</div>}
           </Flex>
-        
-      </Flex>
-    )}
-    
-  </NavLink>
-);
+        </Flex>
+      )}
+    </NavLink>
+  );
+};
 
 export const getColumns = ({ sidebarActive }) => [
   {
     id: 1,
     label: "Dashboard",
-    icon: <RiDashboard3Line  />,
+    icon: <RiDashboard3Line />,
     path: "/",
     content: (column) => {
       return <NavItem column={column} sidebarActive={sidebarActive} />;
@@ -95,15 +118,31 @@ export const getColumns = ({ sidebarActive }) => [
   },
   {
     id: 7,
-    label: "Users",
-    icon: <FaUserLarge />,
-    path: "users",
+    label: "",
+    icon: null,
+    path: null,
     content: (column) => {
-      return <NavItem column={column} sidebarActive={sidebarActive} title="Pages" hr={true}/>;
+      return (
+        <NavItem
+          column={column}
+          sidebarActive={sidebarActive}
+          title="Pages"
+          hr={true}
+        />
+      );
     },
   },
   {
     id: 8,
+    label: "Users",
+    icon: <FaUserLarge />,
+    path: "users",
+    content: (column) => {
+      return <NavItem column={column} sidebarActive={sidebarActive} />;
+    },
+  },
+  {
+    id: 9,
     label: "Recipes",
     icon: <GiHamburger />,
     path: "recipes",
