@@ -1,12 +1,7 @@
-
+import CardsSection from "./cards/cards.section";
 
 const Favorites = () => {
-  return (
-    <div>
-      This is Favorites Page
-    
-    </div>
-  );
+  return <CardsSection />;
 };
 
 export default Favorites;

@@ -36,13 +36,13 @@ const Products = () => {
     <div className="w-full overflow-hidden">
       <Flex
         width="100%"
-        className="bg-amber-400 z-10"
+        className="font-bold z-10"
         align="center"
         justify="between"
         px="9"
         py="3"
       >
-        <Text className="">Total product: {values.length}</Text>
+        <Text className="text-xl">Total product: {values.length}</Text>
         <AddData
           setDataSet={setValues}
           setNewData={setNewProduct}

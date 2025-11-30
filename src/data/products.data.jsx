@@ -8,7 +8,12 @@ export const endPoint = "products"
 export const baseApi = `${import.meta.env.VITE_BASE_URL}/${endPoint}`;
 export const getColumns = (handleDelete, setValues) => [
   {
-    label: "Title",
+    label: "Image",
+    path: "thumbnail",
+    content: (row, column) => <img src={row[column.path]} className="w-16 bg-orange-600 rounded-xl" alt={row.title}/>,
+  },
+  {
+    label: "Product Name",
     path: "title",
     content: (row, column) => <span>{row[column.path]}</span>,
   },
@@ -21,6 +26,16 @@ export const getColumns = (handleDelete, setValues) => [
   {
     label: "Price",
     path: "price",
+    content: (row, column) => <span>${row[column.path]}</span>,
+  },
+  {
+    label: "Piece",
+    path: "stock",
+    content: (row, column) => <span>{row[column.path]}</span>,
+  },
+  {
+    label: "Available Status",
+    path: "availabilityStatus",
     content: (row, column) => <span>{row[column.path]}</span>,
   },
   {
