@@ -69,7 +69,6 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className="bg-white rounded-2xl shadow-sm p-6 w-80 hover:shadow-md transition-shadow">
-      {/* Image Carousel */}
       <div className="relative bg-gray-50 rounded-xl mb-4 h-64 flex items-center justify-center overflow-hidden">
         <img
           src={product.images[currentImageIndex]}
@@ -77,7 +76,6 @@ const ProductCard = ({ product }) => {
           className="max-w-full max-h-full object-contain"
         />
         
-        {/* Navigation Arrows */}
         {product.images.length > 1 && (
           <>
             <button
@@ -98,7 +96,6 @@ const ProductCard = ({ product }) => {
         )}
       </div>
 
-      {/* Product Info */}
       <div className="space-y-3">
         <div className="flex items-start justify-between">
           <h3 className="text-lg font-semibold text-gray-900">
@@ -121,7 +118,6 @@ const ProductCard = ({ product }) => {
           ${product.price.toFixed(2)}
         </p>
 
-        {/* Rating */}
         <div className="flex items-center gap-2">
           <div className="flex">
             {[...Array(5)].map((_, index) => (
@@ -135,7 +131,6 @@ const ProductCard = ({ product }) => {
           <span className="text-sm text-gray-500">({product.reviews})</span>
         </div>
 
-        {/* Edit Button */}
         <button className="cursor-pointer mt-4 bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-3 px-4 rounded-lg transition-colors">
           Edit Product
         </button>
