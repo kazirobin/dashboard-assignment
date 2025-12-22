@@ -60,7 +60,78 @@ const NavItem = ({ column, sidebarActive, hr, title }) => {
     </NavLink>
   );
 };
-
+export const getLinks = [
+  {
+    title: "Main",
+    type:"group",
+    id: 1,
+    path: null,
+    label: null,
+    icon: null,
+    children: [
+      {
+        id: 11,
+        type:"item",
+        path: "/",
+        label: "Dashboard",
+        icon: <RiDashboard3Line />,
+      },
+      {
+        id: "category",
+        icon: <RiDashboard3Line />,
+        title: "Category List",
+        type:"collapsable",
+        subLink: [
+          {
+            id: "electronic",
+            path: "/category/electronic",
+            label: "Electronic",
+            icon: <RiDashboard3Line />,
+          },
+          {
+            id: "cosmetic",
+            path: "/category/cosmetic",
+            label: "Cosmetic",
+            icon: <RiDashboard3Line />,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "Main Two",
+    type:"group",
+    children: [
+      {
+        id: "user",
+        path: "/user",
+        label: "User",
+        icon: <RiDashboard3Line />,
+      },
+      {
+        id: 22,
+        icon: <RiDashboard3Line />,
+        title: "Category List",
+        type:"collapsable",
+        subLink: [
+          {
+            id: "electronic",
+            path: "/category/electronic",
+            label: "electronic",
+            icon: <RiDashboard3Line />,
+          },
+          {
+            id: "cosmetic",
+            path: "/category/cosmetic",
+            label: "cosmetic",
+            icon: <RiDashboard3Line />,
+          },
+        ],
+      },
+    ],
+  },
+];
 export const getColumns = ({ sidebarActive }) => [
   {
     id: 1,

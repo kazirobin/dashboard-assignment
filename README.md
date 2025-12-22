@@ -207,3 +207,5 @@ export const router = createBrowserRouter([
 - update/edit product🆗
 - data is up to date 🆗
 - page is up to date 🆗
+- typescript
+- redix

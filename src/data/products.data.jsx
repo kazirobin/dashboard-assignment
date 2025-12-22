@@ -84,6 +84,20 @@ export const formFields = [
     placeholder: "Price Title..",
     required: true,
   },
+  {
+    name: "price",
+    label: "Price :",
+    type: "number",
+    placeholder: "Price Title..",
+    required: true,
+  },
+  {
+    name: "price",
+    label: "Price :",
+    type: "number",
+    placeholder: "Price Title..",
+    required: true,
+  },
 ];
 export const validation = object({
   title: string().required("Title is required"),
