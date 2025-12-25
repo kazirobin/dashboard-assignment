@@ -6,132 +6,92 @@ import { GiHamburger } from "react-icons/gi";
 import { RiDashboard3Line } from "react-icons/ri";
 import { PiChats, PiListChecksBold } from "react-icons/pi";
 import { LuRows3 } from "react-icons/lu";
-const NavItem = ({ column, sidebarActive, hr, title }) => {
-  if (!column.path) {
-    return (
-      <div>
-        {hr && <div className="border-[#797A7C] mt-2 border w-full"></div>}
-        {sidebarActive ? (
-          <div className="border-l-4 border-amber-50 block pt-3 -ml-1 ps-7 font-medium text-[#797A7C] uppercase  ">
-            {title}
-          </div>
-        ) : (
-          ""
-        )}
-      </div>
-    );
-  }
-  return (
-    <NavLink
-      to={column.path}
-      className={({ isActive }) =>
-        `block border-l-4 my-0.5 relative${
-          isActive
-            ? "text-amber-950   bg-gray-100 border-l-blue-600"
-            : " border-l-amber-50 hover:border-l-gray-300"
-        }`
-      }
-    >
-      {({ isActive }) => (
-        <Flex direction="column">
-          <Flex
-            align="center"
-            className={`h-10 rounded-sm ms-4 ${
-              isActive
-                ? "bg-blue-600 text-white "
-                : "hover:bg-gray-300 hover:text-blue-800"
-            }`}
-          >
-            {sidebarActive ? (
-              <div className="px-4 ">{column.icon}</div>
-            ) : (
-              <div
-                className={` rounded-4 bg-white pe-6 py-3  ${
-                  isActive && "text-blue-600"
-                }`}
-              >
-                {column.icon}
-              </div>
-            )}
-            {sidebarActive && <div className="pe-3">{column.label}</div>}
-          </Flex>
-        </Flex>
-      )}
-    </NavLink>
-  );
-};
+
+
+
+
+
+
 export const getLinks = [
   {
-    title: "Main",
-    type:"group",
+    title: null,
+    type: "group",
     id: 1,
-    path: null,
-    label: null,
-    icon: null,
     children: [
       {
-        id: 11,
-        type:"item",
+        id: "dashboard",
+        type: "item",
         path: "/",
-        label: "Dashboard",
         icon: <RiDashboard3Line />,
+        label: "Dashboard",
       },
       {
-        id: "category",
-        icon: <RiDashboard3Line />,
-        title: "Category List",
-        type:"collapsable",
-        subLink: [
-          {
-            id: "electronic",
-            path: "/category/electronic",
-            label: "Electronic",
-            icon: <RiDashboard3Line />,
-          },
-          {
-            id: "cosmetic",
-            path: "/category/cosmetic",
-            label: "Cosmetic",
-            icon: <RiDashboard3Line />,
-          },
-        ],
+        id: "products",
+        type: "item",
+        path: "products",
+        icon: <AiFillProduct />,
+        label: "Products",
+      },
+      {
+        id: "favorites",
+        type: "item",
+        path: "favorites",
+        icon: <FaRegHeart />,
+        label: "Favorites",
+      },
+      {
+        id: "inbox",
+        type: "item",
+        path: "inbox",
+        icon: <PiChats />,
+        label: "Inbox",
+      },
+      {
+        id: "orderLists",
+        type: "item",
+        path: "order-lists",
+        icon: <PiListChecksBold />,
+        label: "Order Lists",
+      },
+      {
+        id: "productStock",
+        type: "item",
+        path: "product-stock",
+        icon: <LuRows3 />,
+        label: "Product Stock",
       },
     ],
   },
   {
     id: 2,
-    title: "Main Two",
-    type:"group",
+    title: "Pages",
+    type: "group",
     children: [
       {
-        id: "user",
-        path: "/user",
-        label: "User",
-        icon: <RiDashboard3Line />,
+        id: "users",
+        type: "item",
+        path: "users",
+        icon: <FaUserLarge />,
+        label: "Users",
       },
       {
-        id: 22,
-        icon: <RiDashboard3Line />,
-        title: "Category List",
-        type:"collapsable",
-        subLink: [
-          {
-            id: "electronic",
-            path: "/category/electronic",
-            label: "electronic",
-            icon: <RiDashboard3Line />,
-          },
-          {
-            id: "cosmetic",
-            path: "/category/cosmetic",
-            label: "cosmetic",
-            icon: <RiDashboard3Line />,
-          },
-        ],
+        id: "recipes",
+        type: "item",
+        path: "recipes",
+        icon: <FaUserLarge />,
+        label: "Recipes",
       },
+     
     ],
   },
 ];
+
+
+
+
+
+
+
 export const getColumns = ({ sidebarActive }) => [
   {
     id: 1,
