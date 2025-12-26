@@ -52,7 +52,7 @@ const Card = ({ card }) => {
   const StatusIcon = StatusData.icon;
   
   return (
-    <div className="my-4 first:ms-0 last:me-0 p-4 bg-white rounded-lg shadow-sm lg:w-75 h-40 w-auto">
+    <div className="my-4 first:ms-0 last:me-0 p-4 bg-white rounded-lg shadow-sm lg:w-67 md:w-45 h-40 w-auto flex flex-col justify-between">
       <Flex justify="between"  align="center">
         <div>
           <p className="capitalize text-gray-500 text-sm">{card.title}</p>
@@ -62,9 +62,9 @@ const Card = ({ card }) => {
          {card.icon}
         </div>
       </Flex>
-      <Flex align="center" gap="1" className="mt-10">
-        <StatusIcon className={`text-xs ${StatusData.color}`} />
-        <span className={`text-sm ${StatusData.color}`}>
+      <Flex align="baseline" gap="1" className="lg:mt-10 md:mt-6 mt-4">
+        <StatusIcon className={`text-xs ${StatusData.color} `} />
+        <span className={`text-sm ${StatusData.color}  h-auto`}>
           {card.percentage}
         </span>
           <p className="text-xs text-gray-500">{card.details}</p>
@@ -76,7 +76,7 @@ const Card = ({ card }) => {
 
 const CardsSection = () => {
   return (
-    <div className="flex flex-wrap px-3 justify-between">
+    <div className="flex gap-4 px-3 justify-between">
       {cardData.map((card) => (
         <Card key={card.id} card={card} />
       ))}
