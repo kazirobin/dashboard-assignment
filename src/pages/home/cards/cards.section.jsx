@@ -52,17 +52,17 @@ const Card = ({ card }) => {
   const StatusIcon = StatusData.icon;
   
   return (
-    <div className="mx-auto my-4 first:ms-0 last:me-0 p-4 bg-white rounded-lg shadow-sm">
-      <Flex gap="8"  align="center">
+    <div className="my-4 first:ms-0 last:me-0 p-4 bg-white rounded-lg shadow-sm lg:w-75 h-40 w-auto">
+      <Flex justify="between"  align="center">
         <div>
           <p className="capitalize text-gray-500 text-sm">{card.title}</p>
           <h1 className="text-2xl font-semibold">{card.counter}</h1>
         </div>
-        <div className={`p-4 `}>
+        <div>
          {card.icon}
         </div>
       </Flex>
-      <Flex align="center" gap="1" className="mt-2">
+      <Flex align="center" gap="1" className="mt-10">
         <StatusIcon className={`text-xs ${StatusData.color}`} />
         <span className={`text-sm ${StatusData.color}`}>
           {card.percentage}
@@ -76,7 +76,7 @@ const Card = ({ card }) => {
 
 const CardsSection = () => {
   return (
-    <div className="flex">
+    <div className="flex flex-wrap px-3 justify-between">
       {cardData.map((card) => (
         <Card key={card.id} card={card} />
       ))}

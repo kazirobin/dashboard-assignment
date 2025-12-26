@@ -12,7 +12,7 @@ function MainLayout() {
   };
   return (
     <Theme>
-      <div className="flex h-screen max-w-screen mx-auto p-4  overflow-hidden">
+      <div className="flex h-screen max-w-[1400px] mx-auto p-4  overflow-hidden">
         <div className="">
           <Sidebar
             sidebarActive={sidebarActive}
@@ -28,7 +28,7 @@ function MainLayout() {
             />
           </div>
 
-          <div className="h-screen overflow-scroll pb-40 bg-[#F5F6FA]">
+          <div className="h-screen maz-w-[1200px] overflow-scroll pb-40 bg-[#F5F6FA]">
             <Outlet />
           </div>
         </div>
