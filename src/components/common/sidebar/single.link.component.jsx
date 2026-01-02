@@ -35,7 +35,7 @@ const SingleLink = ({ column, sidebarActive }) => {
                 {column.icon}
               </div>
             )}
-            {sidebarActive && <div className="pe-3">{column.label}</div>}
+            {sidebarActive && <div className="pe-3 w-max">{column.label}</div>}
           </Flex>
         </Flex>
       )}

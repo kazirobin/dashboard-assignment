@@ -6,6 +6,8 @@ import { GiHamburger } from "react-icons/gi";
 import { RiDashboard3Line } from "react-icons/ri";
 import { PiChats, PiListChecksBold } from "react-icons/pi";
 import { LuRows3 } from "react-icons/lu";
+import { FcSettings } from "react-icons/fc";
+import { FiLogOut } from "react-icons/fi";
 
 
 
@@ -80,6 +82,28 @@ export const getLinks = [
         path: "recipes",
         icon: <FaUserLarge />,
         label: "Recipes",
+      },
+     
+    ],
+  },
+  {
+    id: 3,
+    title: " ",
+    type: "group",
+    children: [
+      {
+        id: "settings",
+        type: "item",
+        path: "settings",
+        icon: <FcSettings />,
+        label: "Settings",
+      },
+      {
+        id: "logout",
+        type: "item",
+        path: "logout",
+        icon: <FiLogOut />,
+        label: "Logout",
       },
      
     ],

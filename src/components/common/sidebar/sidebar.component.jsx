@@ -30,7 +30,7 @@ const Sidebar = ({ sidebarActive, handleSidebar }) => {
           {/* Optional: Show column title if it exists */}
           { column.title && (
             <div className="border-t-[#797A7C] mt-2  w-full border-t-2 border-l-4 border-amber-50 block pt-3 -ml-1 ps-7 font-medium text-[#797A7C] uppercase ">
-              {sidebarActive && (<h3 className="text-black pb-3">{column.title}</h3>)}
+              {sidebarActive && (<h3 className="text-black">{column.title}</h3>)}
               
             </div>
           )}
