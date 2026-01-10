@@ -209,3 +209,14 @@ export const router = createBrowserRouter([
 - page is up to date 🆗
 - typescript
 - redix
+
+- - .env
+- - pagination
+- - loading in to center
+- - dialog box ui update
+- - radix ui flex not use
+- - if not edit then update button is disable
+- - dynamic dialog make children
+- - remove all comment try er under a try
+- - base api prop not needed
+- - 
